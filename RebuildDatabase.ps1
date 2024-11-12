@@ -1,6 +1,6 @@
 Param(
    [string] $Server = "(localdb)\MSSQLLocalDb",
-   [string] $Database = "temp"
+   [string] $Database = "tuesday"
 )
 
 # This script requires the SQL Server module for PowerShell.
@@ -44,7 +44,7 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData
 
 #footballs
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.Conference.sql"
-
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "Path\To\Sql\Tables\Football.Team.sql"
 
 
 

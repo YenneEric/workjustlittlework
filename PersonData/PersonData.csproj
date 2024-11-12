@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\Procedures\RetrieveAdressNames.sql" />
+    <Content Include="Sql\Tables\Football.Team.sql" />
     <EmbeddedResource Include="Sql\Schemas\Football.sql" />
     <EmbeddedResource Include="Sql\Tables\Football.Conference.sql" />
   </ItemGroup>
