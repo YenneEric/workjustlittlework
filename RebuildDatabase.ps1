@@ -44,7 +44,22 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData
 
 #footballs
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.Conference.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "Path\To\Sql\Tables\Football.Team.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.TeamType.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.Team.sql"
+
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.Player.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.Season.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.TeamPlayer.sql"
+
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.Game.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.GameTeam.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\Football.PlayerStats.sql"
+
+
+
+
+
+
 
 
 

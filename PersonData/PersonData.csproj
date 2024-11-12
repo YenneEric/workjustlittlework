@@ -89,7 +89,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\Procedures\RetrieveAdressNames.sql" />
+    <Content Include="Sql\Tables\Football.Game.sql" />
+    <Content Include="Sql\Tables\Football.GameTeam.sql" />
+    <Content Include="Sql\Tables\Football.Player.sql" />
+    <Content Include="Sql\Tables\Football.PlayerStats.sql" />
+    <Content Include="Sql\Tables\Football.Season.sql" />
     <Content Include="Sql\Tables\Football.Team.sql" />
+    <Content Include="Sql\Tables\Football.TeamPlayer.sql" />
+    <Content Include="Sql\Tables\Football.TeamType.sql" />
     <EmbeddedResource Include="Sql\Schemas\Football.sql" />
     <EmbeddedResource Include="Sql\Tables\Football.Conference.sql" />
   </ItemGroup>
