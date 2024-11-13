@@ -18,7 +18,9 @@ namespace PersonData.Models
         public int Touchdowns { get; }
         public int FieldGoalsMade { get; }
 
-        public PlayerStats(int playerStatsId, int teamPlayerId, int gameId, int teamId, int rushingYards, int receivingYards, int throwingYards, int tackles, int sacks, int turnovers, int interceptionsCaught, int touchdowns, int fieldGoalsMade)
+        public int Punts { get; }
+
+        public PlayerStats(int playerStatsId, int teamPlayerId, int gameId, int teamId, int rushingYards, int receivingYards, int throwingYards, int tackles, int sacks, int turnovers, int interceptionsCaught, int touchdowns, int fieldGoalsMade, int punts)
         {
             PlayerStatsId = playerStatsId;
             TeamPlayerId = teamPlayerId;
@@ -33,6 +35,7 @@ namespace PersonData.Models
             InterceptionsCaught = interceptionsCaught;
             Touchdowns = touchdowns;
             FieldGoalsMade = fieldGoalsMade;
+            Punts = punts;
         }
     }
 }

@@ -97,6 +97,15 @@
     <EmbeddedResource Include="Sql\Procedures\Person.FetchPerson.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\Data\Football.Conference.sql" />
+    <Content Include="Sql\Data\Football.Game.sql" />
+    <Content Include="Sql\Data\Football.GameTeam.sql" />
+    <Content Include="Sql\Data\Football.GameType.sql" />
+    <Content Include="Sql\Data\Football.Player.sql" />
+    <Content Include="Sql\Data\Football.PlayerStats.sql" />
+    <Content Include="Sql\Data\Football.Season.sql" />
+    <Content Include="Sql\Data\Football.Team.sql" />
+    <Content Include="Sql\Data\Football.TeamPlayer.sql" />
     <Content Include="Sql\Procedures\RetrieveAdressNames.sql" />
     <Content Include="Sql\Tables\Football.Game.sql" />
     <Content Include="Sql\Tables\Football.GameTeam.sql" />

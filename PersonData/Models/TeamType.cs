@@ -5,9 +5,9 @@ namespace PersonData.Models
     public class TeamType
     {
         public int TeamTypeId { get; }
-        public int Name { get; }
+        public string Name { get; }
 
-        public TeamType(int teamTypeId, int name)
+        public TeamType(int teamTypeId, string name)
         {
             TeamTypeId = teamTypeId;
             Name = name;
