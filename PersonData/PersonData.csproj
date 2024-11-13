@@ -49,7 +49,16 @@
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressType.cs" />
+    <Compile Include="Models\Conference.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GameTeam.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayerStats.cs" />
+    <Compile Include="Models\Season.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamPlayer.cs" />
+    <Compile Include="Models\TeamType.cs" />
     <Compile Include="RecordNotFoundException.cs" />
     <Compile Include="SqlAddressRepository.cs" />
     <Compile Include="SqlPersonRepository.cs" />
