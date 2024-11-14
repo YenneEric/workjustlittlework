@@ -1,0 +1,30 @@
+﻿<Window x:Class="View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.ColumnSpan="3" Text="College Football Stats" TextAlignment="Center" VerticalAlignment="Center" FontSize="45"></TextBlock>
+
+        <Button Content="Most Touchdowns" Grid.Row="1" Grid.Column="1" Margin="40"></Button>
+        <Button Content="Top Scoring Team" Grid.Row="1" Grid.Column="2" Margin="40"></Button>
+        <Button Content="Confrence Wins" Grid.Row="2" Grid.Column="1" Margin="40"></Button>
+        <Button Content="Most Team Yards" Grid.Row="2" Grid.Column="2" Margin="40"></Button>
+
+    </Grid>
+</Window>
