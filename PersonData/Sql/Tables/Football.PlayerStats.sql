@@ -18,6 +18,7 @@ BEGIN
       Turnovers INT NOT NULL,
       InterceptionsCaught INT NOT NULL,
       Touchdowns INT NOT NULL,
+      Punts INT NOT NULL,
       FieldGoalsMade INT NOT NULL,
 
       CONSTRAINT [PK_Football_PlayerStats_PlayerStatsId] PRIMARY KEY CLUSTERED

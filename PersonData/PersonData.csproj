@@ -49,7 +49,16 @@
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressType.cs" />
+    <Compile Include="Models\Conference.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GameTeam.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayerStats.cs" />
+    <Compile Include="Models\Season.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamPlayer.cs" />
+    <Compile Include="Models\TeamType.cs" />
     <Compile Include="RecordNotFoundException.cs" />
     <Compile Include="SqlAddressRepository.cs" />
     <Compile Include="SqlPersonRepository.cs" />
@@ -88,6 +97,15 @@
     <EmbeddedResource Include="Sql\Procedures\Person.FetchPerson.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\Data\Football.Conference.sql" />
+    <Content Include="Sql\Data\Football.Game.sql" />
+    <Content Include="Sql\Data\Football.GameTeam.sql" />
+    <Content Include="Sql\Data\Football.GameType.sql" />
+    <Content Include="Sql\Data\Football.Player.sql" />
+    <Content Include="Sql\Data\Football.PlayerStats.sql" />
+    <Content Include="Sql\Data\Football.Season.sql" />
+    <Content Include="Sql\Data\Football.Team.sql" />
+    <Content Include="Sql\Data\Football.TeamPlayer.sql" />
     <Content Include="Sql\Procedures\RetrieveAdressNames.sql" />
     <Content Include="Sql\Tables\Football.Game.sql" />
     <Content Include="Sql\Tables\Football.GameTeam.sql" />

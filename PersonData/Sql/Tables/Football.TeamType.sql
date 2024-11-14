@@ -6,7 +6,7 @@ BEGIN
    CREATE TABLE Football.TeamType
    (
       TeamTypeId INT NOT NULL IDENTITY(1, 1), -- Primary Key (PK)
-      Name INT NOT NULL,                      -- Must be either 1 or 2
+      Name NVARCHAR(255) NOT NULL,                      -- Must be either 1 or 2
 
       CONSTRAINT [PK_Football_TeamType_TeamTypeId] PRIMARY KEY CLUSTERED
       (
@@ -19,7 +19,7 @@ END;
  * Check Constraints
  ****************************/
 
--- Ensure that Name is either 1 or 2
+-- Ensure that Name is Home or Away
 IF NOT EXISTS
    (
       SELECT *
@@ -27,10 +27,9 @@ IF NOT EXISTS
       WHERE cc.parent_object_id = OBJECT_ID(N'Football.TeamType')
          AND cc.[name] = N'CK_Football_TeamType_Name'
    )
-BEGIN
+   BEGIN
    ALTER TABLE Football.TeamType
-   ADD CONSTRAINT [CK_Football_TeamType_Name] CHECK
-   (
-      Name IN (1, 2) -- 1 = Home, 2 = Away
-   );
+   ADD CONSTRAINT CK_Football_TeamType_Name
+   CHECK (Name IN (N'Home', N'Away'));
 END;
+
