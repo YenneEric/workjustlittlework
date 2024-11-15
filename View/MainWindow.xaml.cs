@@ -23,8 +23,9 @@ namespace View
             HomePage.CustomChange += InsertClick;
             InsertData.CustomChange += BackHome;
             MostTouchdowns.CustomChange += BackHome;
-
-
+            TopScoring.CustomChange += BackHome;
+            ConfrenceWins.CustomChange += BackHome;
+            MostTeamYards.CustomChange += BackHome;
 
 
         }
@@ -41,13 +42,30 @@ namespace View
                 HomePage.Visibility = Visibility.Hidden;
                 InsertData.Visibility = Visibility.Visible;
             }
-            if(name == "MostTd")
+            else if(name == "MostTd")
             {
                 HomePage.Visibility = Visibility.Hidden;
                 MostTouchdowns.Visibility = Visibility.Visible;
             }
-            
-            
+            else if (name == "TopScoring")
+            {
+                HomePage.Visibility = Visibility.Hidden;
+                TopScoring.Visibility = Visibility.Visible;
+            }
+            else if (name == "ConfrenceWins")
+            {
+                HomePage.Visibility = Visibility.Hidden;
+                ConfrenceWins.Visibility = Visibility.Visible;
+            }
+            else if (name == "MostTeamYards")
+            {
+                HomePage.Visibility = Visibility.Hidden;
+                MostTeamYards.Visibility = Visibility.Visible;
+            }
+
+
+
+
         }
 
         private void BackHome(object? sender, RoutedEventArgs e)
@@ -55,6 +73,9 @@ namespace View
             HomePage.Visibility = Visibility.Visible;
             InsertData.Visibility = Visibility.Hidden;
             MostTouchdowns.Visibility = Visibility.Hidden;
+            TopScoring.Visibility = Visibility.Hidden;
+            ConfrenceWins.Visibility = Visibility.Hidden;
+            MostTeamYards.Visibility = Visibility.Hidden;
         }
 
 

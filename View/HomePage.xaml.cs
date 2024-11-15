@@ -32,14 +32,15 @@ namespace View
             if(sender is Button b)
             {
                 string name = b.Name;
-                if(name == "InsertButton")
-                {
-                    CustomChange?.Invoke(this, new CustomizeEventArgs(name));
-                }
-                if(name == "MostTd")
-                {
-                    CustomChange?.Invoke(this, new CustomizeEventArgs(name));
-                }
+                if(name == "InsertButton") CustomChange?.Invoke(this, new CustomizeEventArgs(name));
+                
+                if(name == "MostTd") CustomChange?.Invoke(this, new CustomizeEventArgs(name));
+                
+                if (name == "TopScoring") CustomChange?.Invoke(this, new CustomizeEventArgs(name));
+                
+                if (name == "ConfrenceWins") CustomChange?.Invoke(this, new CustomizeEventArgs(name));
+                
+                if (name == "MostTeamYards") CustomChange?.Invoke(this, new CustomizeEventArgs(name));
                 
             }
             

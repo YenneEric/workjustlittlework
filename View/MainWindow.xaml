@@ -10,6 +10,9 @@
         <local:HomePage x:Name="HomePage" Visibility="Visible"/>
         <local:InsertData x:Name="InsertData" Visibility="Hidden"/>
         <local:MostTouchdowns x:Name="MostTouchdowns" Visibility="Hidden"/>
+        <local:ConfrenceWins x:Name="ConfrenceWins" Visibility="Hidden"/>
+        <local:MostTeamYards x:Name="MostTeamYards" Visibility="Hidden"/>
+        <local:TopScoring x:Name="TopScoring" Visibility="Hidden"/>
 
     </Grid>
 </Window>
