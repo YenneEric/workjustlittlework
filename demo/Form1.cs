@@ -10,6 +10,7 @@ namespace demo
     public partial class Form1 : Form
     {
         private readonly IAddressRepository addressRepository;
+        private readonly IStatRepository stats;
 
         public Form1()
         {
@@ -17,23 +18,32 @@ namespace demo
 
             // Initialize the address repository with a connection string.
             // Replace with your actual database connection string.
-            const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=temp;Integrated Security=SSPI;";
+            const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=tuesday;Integrated Security=SSPI;";
             addressRepository = new SqlAddressRepository(connectionString);
+            stats = new SqlTouchDownRepository(connectionString);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
+                // Load address type names
                 var addressTypeNames = addressRepository.GetAddressName();
-
                 box.DataSource = addressTypeNames;
+
+                // Fetch touchdowns
+                var touchdowns = stats.FetchTouchdownPlayer("Quarterback", 2019);
+
+                // Bind touchdowns to box2
+                box2.DataSource = touchdowns;
+                box2.DisplayMember = "PlayerName"; // Display PlayerName in the list
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"HERE?Error loading Address Types: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.box = new System.Windows.Forms.ComboBox();
+            this.box2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // box
@@ -39,11 +40,20 @@
             this.box.Size = new System.Drawing.Size(121, 24);
             this.box.TabIndex = 0;
             // 
+            // box2
+            // 
+            this.box2.FormattingEnabled = true;
+            this.box2.Location = new System.Drawing.Point(60, 94);
+            this.box2.Name = "box2";
+            this.box2.Size = new System.Drawing.Size(121, 24);
+            this.box2.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.box2);
             this.Controls.Add(this.box);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -55,6 +65,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox box;
+        private System.Windows.Forms.ComboBox box2;
     }
 }
 

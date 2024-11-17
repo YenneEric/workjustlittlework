@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="IAddressRepository.cs" />
     <Compile Include="IPersonRepository.cs" />
+    <Compile Include="IStatRepository.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressType.cs" />
     <Compile Include="Models\Conference.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="SqlAddressRepository.cs" />
     <Compile Include="SqlPersonRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlTouchDownRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Sql\Tables\DropTables.sql" />
@@ -106,6 +108,7 @@
     <Content Include="Sql\Data\Football.Season.sql" />
     <Content Include="Sql\Data\Football.Team.sql" />
     <Content Include="Sql\Data\Football.TeamPlayer.sql" />
+    <Content Include="Sql\Procedures\Football.FetchTouchdowns.sql" />
     <Content Include="Sql\Procedures\RetrieveAdressNames.sql" />
     <Content Include="Sql\Tables\Football.Game.sql" />
     <Content Include="Sql\Tables\Football.GameTeam.sql" />
