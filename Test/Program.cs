@@ -1,46 +1,26 @@
-﻿using PersonData.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
+﻿using PersonData;
 
 class Program
 {
     static void Main()
     {
         const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=tuesday;Integrated Security=SSPI;";
+        var repository = new SqlInsertRepository(connectionString);
 
         try
-{
-            using (var connection = new SqlConnection(connectionString))
-            {
-                Console.WriteLine("Opening connection...");
-                connection.Open();
-                Console.WriteLine("Connection opened successfully.");
+        {
+            Console.WriteLine("Creating conference...");
 
-                using (var command = new SqlCommand("Football.FetchTouchdownsRank", connection))
-                {
-                    Console.WriteLine("Preparing command...");
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("Year", 2019);
-                    command.Parameters.AddWithValue("Position", "Quarterback");
+            // Example conference name
+            string confName = "testing";
 
-                    Console.WriteLine("Executing command...");
-                    using (var reader = command.ExecuteReader())
-                    {
-                        Console.WriteLine("Reading results...");
-                        while (reader.Read())
-                        {
-                            Console.WriteLine($"PlayerName: {reader["PlayerName"]}, TeamName: {reader["TeamName"]}, Touchdowns: {reader["TotalTouchdowns"]}");
-                        }
-                    }
-                }
-            }
+            repository.CreateConference(confName);
+
+            Console.WriteLine("Conference created successfully.");
         }
-catch (Exception ex)
-{
+        catch (Exception ex)
+        {
             Console.WriteLine($"Error: {ex.Message}");
         }
-
     }
 }

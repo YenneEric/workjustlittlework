@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAddressRepository.cs" />
+    <Compile Include="IInsert.cs" />
+    <Compile Include="SqlInsertRepository.cs" />
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="IStatRepository.cs" />
     <Compile Include="Models\Address.cs" />
@@ -108,7 +110,16 @@
     <Content Include="Sql\Data\Football.Season.sql" />
     <Content Include="Sql\Data\Football.Team.sql" />
     <Content Include="Sql\Data\Football.TeamPlayer.sql" />
+    <Content Include="Sql\Procedures\Football.CreateConference.sql" />
+    <Content Include="Sql\Procedures\Football.CreateGameTeam.sql" />
+    <Content Include="Sql\Procedures\Football.CreatePlayer.sql" />
+    <Content Include="Sql\Procedures\Football.CreatePlayerStats.sql" />
+    <Content Include="Sql\Procedures\Football.CreateGame.sql" />
+    <Content Include="Sql\Procedures\Football.CreateSeason.sql" />
+    <Content Include="Sql\Procedures\Football.CreateTeam.sql" />
+    <Content Include="Sql\Procedures\Football.CreateTeamPlayer.sql" />
     <Content Include="Sql\Procedures\Football.FetchTouchdowns.sql" />
+    <Content Include="Sql\Procedures\Football.UpdatePlayer.sql" />
     <Content Include="Sql\Procedures\RetrieveAdressNames.sql" />
     <Content Include="Sql\Tables\Football.Game.sql" />
     <Content Include="Sql\Tables\Football.GameTeam.sql" />
