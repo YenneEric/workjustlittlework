@@ -1,3 +1,7 @@
+
+--select from the table playerstats all parameters are optional 
+
+
 CREATE OR ALTER PROCEDURE Football.GetPlayerStats
     @PlayerStatsId INT = NULL,
     @TeamPlayerId INT = NULL,

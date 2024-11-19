@@ -1,3 +1,8 @@
+
+--update on the table gameteam where the two ids is required and rest are optional, 
+--only updates the column if a new value is provided
+
+
 CREATE OR ALTER PROCEDURE Football.UpdateGameTeam
     @GameTeamId INT,
     @TeamTypeId INT,
@@ -5,7 +10,7 @@ CREATE OR ALTER PROCEDURE Football.UpdateGameTeam
     @Score INT = NULL
 AS
 BEGIN
-    -- Update the GameTeam record with the given GameTeamId
+    
     UPDATE Football.GameTeam
     SET
         TeamTypeId = @TeamTypeId,
@@ -14,6 +19,6 @@ BEGIN
     WHERE
         GameTeamId = @GameTeamId;
 
-    PRINT 'GameTeam updated successfully.';
+   
 END;
 GO

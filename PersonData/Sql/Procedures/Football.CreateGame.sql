@@ -1,3 +1,6 @@
+
+--inserts A Game row based on Date, Location and outputs the Gameid
+
 CREATE OR ALTER PROCEDURE Football.CreateGame
     @Date DATE,
     @Location NVARCHAR(255),
@@ -5,11 +8,11 @@ CREATE OR ALTER PROCEDURE Football.CreateGame
     @GameId INT OUTPUT
 AS
 BEGIN
-    -- Insert the new game into the Football.Game table
+    
     INSERT INTO Football.Game ([Date], [Location], Canceled)
     VALUES (@Date, @Location, @Canceled);
 
-    -- Retrieve the newly created GameId
+    
     SET @GameId = SCOPE_IDENTITY();
 
 END;

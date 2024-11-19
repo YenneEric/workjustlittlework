@@ -1,3 +1,6 @@
+-- This is one of the aggregating querys that give the rank and the team based on touchdowns. Given a year and a position 
+
+
 CREATE OR ALTER PROCEDURE Football.FetchTouchdownsRank
     @Year INT,
     @Position NVARCHAR(50)

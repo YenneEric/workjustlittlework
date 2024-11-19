@@ -1,3 +1,5 @@
+--select from the table conference all parameters are optional 
+
 CREATE OR ALTER PROCEDURE Football.GetConference
     @ConfId INT = NULL,
     @ConfName NVARCHAR(255) = NULL

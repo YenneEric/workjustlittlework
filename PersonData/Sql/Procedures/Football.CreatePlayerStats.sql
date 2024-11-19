@@ -1,3 +1,6 @@
+
+--inserts row in player stats based on all of the paramaters below
+
 CREATE OR ALTER PROCEDURE Football.CreatePlayerStats
     @PlayerId INT,
     @SeasonYear NVARCHAR(50),
@@ -17,27 +20,27 @@ AS
 BEGIN
     DECLARE @TeamPlayerId INT, @TeamId INT, @SeasonId INT;
 
-    -- Get SeasonId based on the season year
+    
     SELECT @SeasonId = SeasonId
     FROM Football.Season
     WHERE Year = @SeasonYear;
 
     
-    -- Get TeamId based on the team name
+    
     SELECT @TeamId = TeamId
     FROM Football.Team
     WHERE TeamName = @TeamName;
 
    
 
-    -- Get TeamPlayerId based on PlayerId, TeamId, and SeasonId
+    
     SELECT @TeamPlayerId = TeamPlayerId
     FROM Football.TeamPlayer
     WHERE PlayerId = @PlayerId AND TeamId = @TeamId AND SeasonId = @SeasonId;
 
    
 
-    -- Insert the new PlayerStats record
+   
     INSERT INTO Football.PlayerStats (
         TeamPlayerId,
         TeamId,

@@ -1,17 +1,20 @@
+
+--update on the table game where game id is required and rest are optional, only updates the column if a new value is provided
+
 CREATE OR ALTER PROCEDURE Football.UpdateGame
-    @GameId INT,         -- The ID of the game to update
-    @Date DATE = NULL,   -- The new date of the game (optional)
-    @Location NVARCHAR(255) = NULL, -- The new location of the game (optional)
-    @Canceled INT = NULL -- The canceled status of the game (optional)
+    @GameId INT,         
+    @Date DATE = NULL,   
+    @Location NVARCHAR(255) = NULL, 
+    @Canceled INT = NULL 
 AS
 BEGIN
    
-    -- Update the game
+    
     UPDATE Football.Game
     SET
-        [Date] = COALESCE(@Date, [Date]),  -- Update only if a new value is provided
-        [Location] = COALESCE(@Location, [Location]), -- Update only if a new value is provided
-        [Canceled] = COALESCE(@Canceled, [Canceled]) -- Update only if a new value is provided
+        [Date] = COALESCE(@Date, [Date]),  
+        [Location] = COALESCE(@Location, [Location]), 
+        [Canceled] = COALESCE(@Canceled, [Canceled]) 
     WHERE
         GameId = @GameId;
 

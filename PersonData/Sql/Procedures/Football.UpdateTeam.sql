@@ -1,12 +1,16 @@
+
+--update on the table team where the id is required and rest are optional, 
+--only updates the column if a new value is provided
+
 CREATE OR ALTER PROCEDURE Football.UpdateTeam
-    @TeamId INT, -- ID of the team to update
-    @TeamName NVARCHAR(255) = NULL, -- Optional: New team name
-    @Location NVARCHAR(255) = NULL, -- Optional: New location
-    @Mascot NVARCHAR(255) = NULL, -- Optional: New mascot
-    @ConfId INT = NULL -- Optional: New conference ID
+    @TeamId INT, 
+    @TeamName NVARCHAR(255) = NULL, 
+    @Location NVARCHAR(255) = NULL, 
+    @Mascot NVARCHAR(255) = NULL, 
+    @ConfId INT = NULL 
 AS
 BEGIN
-    -- Update the team information
+    
     UPDATE Football.Team
     SET 
         TeamName = COALESCE(@TeamName, TeamName),

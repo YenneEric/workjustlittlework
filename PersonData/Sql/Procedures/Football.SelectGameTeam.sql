@@ -1,3 +1,6 @@
+--select from the table gameteam all parameters are optional 
+
+
 CREATE OR ALTER PROCEDURE Football.GetGameTeam
     @GameTeamId INT = NULL,
     @TeamId INT = NULL,

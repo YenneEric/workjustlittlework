@@ -1,3 +1,6 @@
+--select from the table Game all parameters are optional 
+
+
 CREATE OR ALTER PROCEDURE Football.GetGame
     @GameId INT = NULL,
     @Location NVARCHAR(255) = NULL,

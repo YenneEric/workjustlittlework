@@ -1,3 +1,7 @@
+
+--update on the table player where the  id is required and rest are optional, 
+--only updates the column if a new value is provided
+
 CREATE OR ALTER PROCEDURE Football.UpdatePlayer
     @PlayerId INT,           
     @PlayerName NVARCHAR(255) = NULL,
@@ -7,8 +11,8 @@ BEGIN
     
     UPDATE Football.Player
     SET
-        PlayerName = COALESCE(@PlayerName, PlayerName), -- Update if provided, otherwise keep existing value
-        Position = COALESCE(@Position, Position)       -- Update if provided, otherwise keep existing value
+        PlayerName = COALESCE(@PlayerName, PlayerName), 
+        Position = COALESCE(@Position, Position)       
     WHERE
         PlayerId = @PlayerId;
 

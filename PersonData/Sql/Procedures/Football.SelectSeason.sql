@@ -1,3 +1,8 @@
+
+--select from the table season all parameters are optional 
+
+
+
 CREATE OR ALTER PROCEDURE Football.GetSeason
     @SeasonId INT = NULL,
     @Year INT = NULL

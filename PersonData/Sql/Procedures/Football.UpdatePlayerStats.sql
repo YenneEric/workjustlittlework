@@ -1,15 +1,19 @@
+
+--update on the table playerstats where the id is required and rest are optional, 
+--only updates the column if a new value is provided
+
 CREATE OR ALTER PROCEDURE Football.UpdatePlayerStats
-    @PlayerStatsId INT,               -- The ID of the PlayerStats to update
-    @RushingYards INT = NULL,         -- Optional: New rushing yards
-    @ReceivingYards INT = NULL,       -- Optional: New receiving yards
-    @ThrowingYards INT = NULL,        -- Optional: New throwing yards
-    @Tackles INT = NULL,              -- Optional: New tackles
-    @Sacks INT = NULL,                -- Optional: New sacks
-    @Turnovers INT = NULL,            -- Optional: New turnovers
-    @InterceptionsCaught INT = NULL, -- Optional: New interceptions caught
-    @Touchdowns INT = NULL,           -- Optional: New touchdowns
-    @Punts INT = NULL,                -- Optional: New punts
-    @FieldGoalsMade INT = NULL        -- Optional: New field goals made
+    @PlayerStatsId INT,               
+    @RushingYards INT = NULL,         
+    @ReceivingYards INT = NULL,       
+    @ThrowingYards INT = NULL,       
+    @Tackles INT = NULL,             
+    @Sacks INT = NULL,                
+    @Turnovers INT = NULL,            
+    @InterceptionsCaught INT = NULL, 
+    @Touchdowns INT = NULL,          
+    @Punts INT = NULL,                
+    @FieldGoalsMade INT = NULL        
 AS
 BEGIN
     UPDATE Football.PlayerStats
