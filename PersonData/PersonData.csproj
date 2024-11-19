@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="IAddressRepository.cs" />
     <Compile Include="IInsert.cs" />
+    <Compile Include="ISelect.cs" />
+    <Compile Include="IUpdate.cs" />
     <Compile Include="SqlInsertRepository.cs" />
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="IStatRepository.cs" />
@@ -66,7 +68,9 @@
     <Compile Include="SqlAddressRepository.cs" />
     <Compile Include="SqlPersonRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlSelectRepository.cs" />
     <Compile Include="SqlTouchDownRepository.cs" />
+    <Compile Include="SqlUpdateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Sql\Tables\DropTables.sql" />
@@ -119,7 +123,13 @@
     <Content Include="Sql\Procedures\Football.CreateTeam.sql" />
     <Content Include="Sql\Procedures\Football.CreateTeamPlayer.sql" />
     <Content Include="Sql\Procedures\Football.FetchTouchdowns.sql" />
+    <Content Include="Sql\Procedures\Football.SelectPlayer.sql" />
+    <Content Include="Sql\Procedures\Football.SelectTeamPlayer.sql" />
+    <Content Include="Sql\Procedures\Football.UpdateGame.sql" />
+    <Content Include="Sql\Procedures\Football.UpdateGameTeam.sql" />
     <Content Include="Sql\Procedures\Football.UpdatePlayer.sql" />
+    <Content Include="Sql\Procedures\Football.UpdatePlayerStats.sql" />
+    <Content Include="Sql\Procedures\Football.UpdateTeam.sql" />
     <Content Include="Sql\Procedures\RetrieveAdressNames.sql" />
     <Content Include="Sql\Tables\Football.Game.sql" />
     <Content Include="Sql\Tables\Football.GameTeam.sql" />
