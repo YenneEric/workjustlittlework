@@ -49,6 +49,7 @@
     <Compile Include="IInsert.cs" />
     <Compile Include="ISelect.cs" />
     <Compile Include="IUpdate.cs" />
+    <Compile Include="Models\PlayerTouchdownRank.cs" />
     <Compile Include="SqlInsertRepository.cs" />
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="IStatRepository.cs" />

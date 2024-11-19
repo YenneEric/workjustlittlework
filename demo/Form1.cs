@@ -27,16 +27,34 @@ namespace demo
         {
             try
             {
-                // Load address type names
+                // Load address type names into comboBoxAddressType
                 var addressTypeNames = addressRepository.GetAddressName();
-                box.DataSource = addressTypeNames;
+                if (addressTypeNames != null && addressTypeNames.Count > 0)
+                {
+                    box.DataSource = addressTypeNames;
+                }
+                else
+                {
+                    MessageBox.Show("No address types available.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 // Fetch touchdowns
                 var touchdowns = stats.FetchTouchdownPlayer("Quarterback", 2019);
+                if (touchdowns != null && touchdowns.Count > 0)
+                {
+                    // Extract player names and bind them to box2
+                    var playerNames = new List<string>();
+                    foreach (var stat in touchdowns)
+                    {
+                        playerNames.Add(stat.Player.PlayerName); // Get PlayerName from each PlayerTouchdownStats
+                    }
 
-                // Bind touchdowns to box2
-                box2.DataSource = touchdowns;
-                box2.DisplayMember = "PlayerName"; // Display PlayerName in the list
+                    box2.DataSource = playerNames; // Bind the list of player names
+                }
+                else
+                {
+                    MessageBox.Show("No touchdowns found for the given position and year.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -46,12 +64,10 @@ namespace demo
 
 
 
-
         private void comboBoxAddressType_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Handle selection change
-            var selectedAddressType = box.SelectedItem as string;
-            if (selectedAddressType != null)
+            if (box.SelectedItem is string selectedAddressType)
             {
                 MessageBox.Show($"Selected Address Type: {selectedAddressType}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

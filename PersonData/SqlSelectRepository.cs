@@ -42,8 +42,9 @@ namespace PersonData
                             players.Add(new Player(
                                 reader.GetInt32(reader.GetOrdinal("PlayerId")),
                                 reader.GetString(reader.GetOrdinal("PlayerName")),
-                                reader.GetString(reader.GetOrdinal("Position")),
-                                "",0,0
+                                reader.GetString(reader.GetOrdinal("Position")
+                                )
+                               
                             ));
                         }
                     }

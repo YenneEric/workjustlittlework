@@ -10,7 +10,9 @@ namespace PersonData
     public interface IStatRepository
     {
 
-        IReadOnlyList<Player> FetchTouchdownPlayer(string pos, int year);
+        IReadOnlyList<PlayerTouchdownRank> FetchTouchdownPlayer(string pos, int year);
+
+
 
     }
 }

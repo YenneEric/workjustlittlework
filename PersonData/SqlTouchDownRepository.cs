@@ -17,7 +17,7 @@ namespace PersonData
 
 
 
-        public IReadOnlyList<Player> FetchTouchdownPlayer(string pos, int year)
+        public IReadOnlyList<PlayerTouchdownRank> FetchTouchdownPlayer(string pos, int year)
         {
             if (string.IsNullOrWhiteSpace(pos))
                 throw new ArgumentException("Position cannot be null or empty.", nameof(pos));
@@ -35,25 +35,24 @@ namespace PersonData
                     command.Parameters.AddWithValue("Year", year);
                     command.Parameters.AddWithValue("Position", pos);
 
-
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
                     {
-                        var players = TranslatePlayers(reader);
+                        var stats = TranslatePlayerTouchdownStats(reader);
 
-                        if (players.Count == 0)
+                        if (stats.Count == 0)
                             throw new RecordNotFoundException($"No players found for position {pos} in year {year}.");
 
-                        return players;
+                        return stats;
                     }
                 }
             }
         }
 
-        private List<Player> TranslatePlayers(SqlDataReader reader)
+        private List<PlayerTouchdownRank> TranslatePlayerTouchdownStats(SqlDataReader reader)
         {
-            var players = new List<Player>();
+            var stats = new List<PlayerTouchdownRank>();
 
             // Get column ordinals for efficiency
             var playerIdOrdinal = reader.GetOrdinal("PlayerId");
@@ -65,18 +64,22 @@ namespace PersonData
 
             while (reader.Read())
             {
-                players.Add(new Player(
-                    reader.IsDBNull(playerIdOrdinal) ? 0 : reader.GetInt32(playerIdOrdinal),
-                    reader.IsDBNull(playerNameOrdinal) ? string.Empty : reader.GetString(playerNameOrdinal),
-                    reader.IsDBNull(positionOrdinal) ? string.Empty : reader.GetString(positionOrdinal),
-                    reader.IsDBNull(teamNameOrdinal) ? string.Empty : reader.GetString(teamNameOrdinal),
-                    reader.IsDBNull(totalTouchdownsOrdinal) ? 0 : reader.GetInt32(totalTouchdownsOrdinal),
-                    reader.IsDBNull(positionRankOrdinal) ? 0L : reader.GetInt64(positionRankOrdinal) // Correct for long
-                ));
+                var player = new Player(
+                    reader.GetInt32(playerIdOrdinal),
+                    reader.GetString(playerNameOrdinal),
+                    reader.GetString(positionOrdinal)
+                );
+
+                var teamName = reader.GetString(teamNameOrdinal);
+                var totalTouchdowns = reader.GetInt32(totalTouchdownsOrdinal);
+                var positionRank = reader.GetInt64(positionRankOrdinal);
+
+                stats.Add(new PlayerTouchdownRank(player, teamName, totalTouchdowns, positionRank));
             }
 
-            return players;
+            return stats;
         }
+
 
 
     }
