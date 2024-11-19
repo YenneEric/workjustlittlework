@@ -123,8 +123,15 @@
     <Content Include="Sql\Procedures\Football.CreateTeam.sql" />
     <Content Include="Sql\Procedures\Football.CreateTeamPlayer.sql" />
     <Content Include="Sql\Procedures\Football.FetchTouchdowns.sql" />
+    <Content Include="Sql\Procedures\Football.SelectConference.sql" />
+    <Content Include="Sql\Procedures\Football.SelectGame.sql" />
+    <Content Include="Sql\Procedures\Football.SelectGameTeam.sql" />
     <Content Include="Sql\Procedures\Football.SelectPlayer.sql" />
+    <Content Include="Sql\Procedures\Football.SelectPlayerStats.sql" />
+    <Content Include="Sql\Procedures\Football.SelectSeason.sql" />
+    <Content Include="Sql\Procedures\Football.SelectTeam.sql" />
     <Content Include="Sql\Procedures\Football.SelectTeamPlayer.sql" />
+    <Content Include="Sql\Procedures\Football.SelectTeamType.sql" />
     <Content Include="Sql\Procedures\Football.UpdateGame.sql" />
     <Content Include="Sql\Procedures\Football.UpdateGameTeam.sql" />
     <Content Include="Sql\Procedures\Football.UpdatePlayer.sql" />

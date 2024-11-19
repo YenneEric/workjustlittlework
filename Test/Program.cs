@@ -4,41 +4,43 @@ using System.Data.SqlClient;
 
 using System;
 using System;
+using PersonData.Models;
 
 class Program
 {
     static void Main()
     {
         const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=tuesday;Integrated Security=SSPI;";
-        var playerRepo = new SqlSelectRepository(connectionString);
+        var repository = new SqlSelectRepository(connectionString);
 
         try
         {
-            Console.WriteLine("Fetching all players...");
-            var allPlayers = playerRepo.GetPlayers();
-            foreach (var player in allPlayers)
-            {
-                Console.WriteLine($"PlayerId: {player.PlayerId}, Name: {player.PlayerName}, Position: {player.Position}");
-            }
+            // Test 1: Retrieve all seasons
+            Console.WriteLine("All Seasons:");
+            List<Season> allSeasons = repository.GetSeasons();
+            PrintSeasons(allSeasons);
 
-            Console.WriteLine("\nFetching player with PlayerId = 1...");
-            var playerById = playerRepo.GetPlayers(playerId: 1);
-            foreach (var player in playerById)
-            {
-                Console.WriteLine($"PlayerId: {player.PlayerId}, Name: {player.PlayerName}, Position: {player.Position}");
-            }
+            // Test 2: Filter by SeasonId
+            Console.WriteLine("\nSeasons with SeasonId = 1:");
+            List<Season> filteredById = repository.GetSeasons(seasonId: 1);
+            PrintSeasons(filteredById);
 
-            Console.WriteLine("\nFetching players with Position = 'Quarterback'...");
-            var quarterbacks = playerRepo.GetPlayers(position: "Quarterback");
-            foreach (var player in quarterbacks)
-            {
-                Console.WriteLine($"PlayerId: {player.PlayerId}, Name: {player.PlayerName}, Position: {player.Position}");
-            }
+            // Test 3: Filter by Year
+            Console.WriteLine("\nSeasons with Year = 2023:");
+            List<Season> filteredByYear = repository.GetSeasons(year: 2023);
+            PrintSeasons(filteredByYear);
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
     }
-}
 
+    static void PrintSeasons(List<Season> seasons)
+    {
+        foreach (var season in seasons)
+        {
+            Console.WriteLine($"SeasonId: {season.SeasonId}, Year: {season.Year}");
+        }
+    }
+}
