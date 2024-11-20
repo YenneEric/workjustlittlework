@@ -11,8 +11,9 @@
         <local:InsertData x:Name="InsertData" Visibility="Hidden" />
         <local:AddPlayerPage x:Name="AddPlayerPage" Visibility="Hidden" />
         <local:AddGame x:Name="AddGame" Visibility="Hidden" />
-        <local:EditPlayer x:Name="EditPlayer" Visibility="Hidden" />
 
+        <local:EditPlayer x:Name="EditPlayer" Visibility="Hidden" />
+        
         <local:MostTouchdowns x:Name="MostTouchdowns" Visibility="Hidden" />
         <local:ConfrenceWins x:Name="ConfrenceWins" Visibility="Hidden" />
         <local:MostTeamYards x:Name="MostTeamYards" Visibility="Hidden" />
