@@ -45,7 +45,7 @@
             this.box2.FormattingEnabled = true;
             this.box2.Location = new System.Drawing.Point(60, 94);
             this.box2.Name = "box2";
-            this.box2.Size = new System.Drawing.Size(121, 24);
+            this.box2.Size = new System.Drawing.Size(275, 24);
             this.box2.TabIndex = 1;
             // 
             // Form1

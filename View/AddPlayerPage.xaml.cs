@@ -12,6 +12,7 @@ namespace View
     {
         public event EventHandler? NavigateBack;
 
+
         private readonly ISelect _repository; // Repository for fetching data
         private readonly IInsert _insertRepository; // Repository for inserting data
 

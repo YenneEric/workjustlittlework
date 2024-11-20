@@ -6,26 +6,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="445" d:DesignWidth="580">
     <Grid>
-        <StackPanel Margin="20">
-            <TextBlock Text="Add Player" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" />
+        <StackPanel Margin="10">
+            <TextBlock Text="Add Player" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" />
 
-            <TextBlock Text="Player Name" />
-            <TextBox Name="PlayerNameTextBox" Margin="0,5,0,20" />
+            <TextBlock Text="Player Name" FontSize="14" />
+            <TextBox Name="PlayerNameTextBox" Margin="0,5,0,10" FontSize="12" Height="25" />
 
-            <TextBlock Text="Position" />
-            <ComboBox Name="PositionComboBox" Margin="0,5,0,20" />
+            <TextBlock Text="Position" FontSize="14" />
+            <ComboBox Name="PositionComboBox" Margin="0,5,0,10" FontSize="12" Height="25" />
 
-            <TextBlock Text="Team" />
-            <ComboBox Name="TeamComboBox" Margin="0,5,0,20" />
+            <TextBlock Text="Team" FontSize="14" />
+            <ComboBox Name="TeamComboBox" Margin="0,5,0,10" FontSize="12" Height="25" />
 
-            <TextBlock Text="Year" />
-            <ComboBox Name="YearComboBox" Margin="0,5,0,20" />
+            <TextBlock Text="Year" FontSize="14" />
+            <ComboBox Name="YearComboBox" Margin="0,5,0,10" FontSize="12" Height="25" />
 
-            <TextBlock Text="Jersey Number" />
-            <TextBox Name="JerseyNumberTextBox" Margin="0,5,0,20" />
+            <TextBlock Text="Jersey Number" FontSize="14" />
+            <TextBox Name="JerseyNumberTextBox" Margin="0,5,0,10" FontSize="12" Height="25" />
 
-            <Button Content="Add Player" Name="AddPlayerButton" Click="AddPlayerButton_Click" />
-            <Button Content="Back" Click="BackToInsertData" Margin="0,10,0,0" />
+            <Button Content="Add Player" Name="AddPlayerButton" Click="AddPlayerButton_Click" FontSize="14" Height="30" Margin="0,5,0,10" />
+            <Button Content="Back" Click="BackToInsertData" FontSize="14" Height="30" />
         </StackPanel>
     </Grid>
 </UserControl>

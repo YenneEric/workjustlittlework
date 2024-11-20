@@ -10,14 +10,8 @@ namespace View
 
             HomePage.CustomChange += NavigateFromHomePage;
             InsertData.CustomChange += NavigateBackToHome;
-            InsertData.AddPlayer += (s, e) => NavigateToAddPlayerPage();
-            AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData();
-
-            // Add CustomChange handlers for other pages
-            MostTouchdowns.CustomChange += NavigateBackToHome;
-            TopScoring.CustomChange += NavigateBackToHome;
-            ConfrenceWins.CustomChange += NavigateBackToHome;
-            MostTeamYards.CustomChange += NavigateBackToHome;
+            InsertData.AddPlayer += (s, e) => NavigateToAddPlayerPage(); // Anonymous method to match EventHandler
+            AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData(); // Anonymous method to match EventHandler
         }
 
         private void NavigateFromHomePage(object? sender, CustomizeEventArgs e)

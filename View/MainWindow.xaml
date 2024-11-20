@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Grid>
-        <local:HomePage x:Name="HomePage" Visibility="Visible" />
-        <local:InsertData x:Name="InsertData" Visibility="Hidden" />
-        <local:AddPlayerPage x:Name="AddPlayerPage" Visibility="Hidden" />
-        <local:MostTouchdowns x:Name="MostTouchdowns" Visibility="Hidden" />
-        <local:ConfrenceWins x:Name="ConfrenceWins" Visibility="Hidden" />
-        <local:MostTeamYards x:Name="MostTeamYards" Visibility="Hidden" />
-        <local:TopScoring x:Name="TopScoring" Visibility="Hidden" />
+        <local:HomePage x:Name="HomePage" Visibility="Visible" Width="Auto" Height="Auto" />
+        <local:InsertData x:Name="InsertData" Visibility="Hidden" Width="Auto" Height="Auto" />
+        <local:AddPlayerPage x:Name="AddPlayerPage" Visibility="Hidden" Width="Auto" Height="Auto" />
+        <local:MostTouchdowns x:Name="MostTouchdowns" Visibility="Hidden" Width="Auto" Height="Auto" />
+        <local:ConfrenceWins x:Name="ConfrenceWins" Visibility="Hidden" Width="Auto" Height="Auto" />
+        <local:MostTeamYards x:Name="MostTeamYards" Visibility="Hidden" Width="Auto" Height="Auto" />
+        <local:TopScoring x:Name="TopScoring" Visibility="Hidden" Width="Auto" Height="Auto" />
     </Grid>
 </Window>

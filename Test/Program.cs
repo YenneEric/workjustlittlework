@@ -1,34 +1,21 @@
 ﻿using PersonData;
-using System;
-using System.Data.SqlClient;
-
-using System;
-using System;
 using PersonData.Models;
+using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main()
     {
         const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=tuesday;Integrated Security=SSPI;";
-        var repository = new SqlSelectRepository(connectionString);
+        var scheduleRepository = new SqlTouchDownRepository(connectionString);
 
         try
         {
-            // Test 1: Retrieve all seasons
-            Console.WriteLine("All Seasons:");
-            List<Season> allSeasons = repository.GetSeasons();
-            PrintSeasons(allSeasons);
-
-            // Test 2: Filter by SeasonId
-            Console.WriteLine("\nSeasons with SeasonId = 1:");
-            List<Season> filteredById = repository.GetSeasons(seasonId: 1);
-            PrintSeasons(filteredById);
-
-            // Test 3: Filter by Year
-            Console.WriteLine("\nSeasons with Year = 2023:");
-            List<Season> filteredByYear = repository.GetSeasons(year: 2023);
-            PrintSeasons(filteredByYear);
+            // Test: Retrieve game schedule for a specific team and year
+            Console.WriteLine("Game Schedule for 'Kansas State Wildcats' in 2023:");
+            var gameSchedule = scheduleRepository.FetchGameSchedule("Kansas State Wildcats", 2019);
+            PrintGameSchedule(gameSchedule);
         }
         catch (Exception ex)
         {
@@ -36,11 +23,17 @@ class Program
         }
     }
 
-    static void PrintSeasons(List<Season> seasons)
+    static void PrintGameSchedule(IReadOnlyList<GameSchedule> schedules)
     {
-        foreach (var season in seasons)
+        if (schedules.Count == 0)
         {
-            Console.WriteLine($"SeasonId: {season.SeasonId}, Year: {season.Year}");
+            Console.WriteLine("No games found for the specified team and year.");
+            return;
+        }
+
+        foreach (var game in schedules)
+        {
+            Console.WriteLine(game);
         }
     }
 }

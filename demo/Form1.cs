@@ -1,59 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using System.Windows.Forms;
-using PersonData; // Assuming this namespace contains IAddressRepository and SqlAddressRepository.
+using PersonData; // Namespace containing repositories and models
+using PersonData.Models;
 
 namespace demo
-
 {
     public partial class Form1 : Form
     {
-        private readonly IAddressRepository addressRepository;
-        private readonly IStatRepository stats;
+        private readonly ISelect _repository;
 
         public Form1()
         {
             InitializeComponent();
 
-            // Initialize the address repository with a connection string.
-            // Replace with your actual database connection string.
+            // Initialize the repository with a connection string
             const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=tuesday;Integrated Security=SSPI;";
-            addressRepository = new SqlAddressRepository(connectionString);
-            stats = new SqlTouchDownRepository(connectionString);
+            _repository = new SqlSelectRepository(connectionString);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
-                // Load address type names into comboBoxAddressType
-                var addressTypeNames = addressRepository.GetAddressName();
-                if (addressTypeNames != null && addressTypeNames.Count > 0)
+                // Fetch team data for "Kansas State Wildcats"
+                var team = _repository.GetTeams(teamName: "Kansas State Wildcats").FirstOrDefault();
+                if (team == null)
                 {
-                    box.DataSource = addressTypeNames;
-                }
-                else
-                {
-                    MessageBox.Show("No address types available.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Team 'Kansas State Wildcats' not found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
 
-                // Fetch touchdowns
-                var touchdowns = stats.FetchTouchdownPlayer("Quarterback", 2019);
-                if (touchdowns != null && touchdowns.Count > 0)
+                // Fetch season data for the year 2019
+                var season = _repository.GetSeasons(year: 2019).FirstOrDefault();
+                if (season == null)
                 {
-                    // Extract player names and bind them to box2
-                    var playerNames = new List<string>();
-                    foreach (var stat in touchdowns)
+                    MessageBox.Show("Season for the year 2019 not found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Fetch players for the team and season
+                var teamPlayers = _repository.GetTeamPlayers(teamId: team.TeamId, seasonId: season.SeasonId);
+                if (teamPlayers.Count == 0)
+                {
+                    MessageBox.Show("No players found for 'Kansas State Wildcats' in 2019.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Fetch player details and display in the ListBox
+                var players = new List<string>();
+                foreach (var teamPlayer in teamPlayers)
+                {
+                    var player = _repository.GetPlayers(playerId: teamPlayer.PlayerId).FirstOrDefault();
+                    if (player != null)
                     {
-                        playerNames.Add(stat.Player.PlayerName); // Get PlayerName from each PlayerTouchdownStats
+                        players.Add($"{player.PlayerName} ({player.Position})");
                     }
+                }
 
-                    box2.DataSource = playerNames; // Bind the list of player names
+                if (players.Count > 0)
+                {
+                    box2.DataSource = players; // Bind the list of player names and positions
                 }
                 else
                 {
-                    MessageBox.Show("No touchdowns found for the given position and year.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No player details found for the selected team and season.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -61,8 +73,6 @@ namespace demo
                 MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
         private void comboBoxAddressType_SelectedIndexChanged(object sender, EventArgs e)
         {

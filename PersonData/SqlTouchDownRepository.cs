@@ -80,7 +80,77 @@ namespace PersonData
             return stats;
         }
 
+        public IReadOnlyList<GameSchedule> FetchGameSchedule(string teamName, int year)
+        {
+            if (string.IsNullOrWhiteSpace(teamName))
+                throw new ArgumentException("Team name cannot be null or empty.", nameof(teamName));
 
+            if (year <= 0)
+                throw new ArgumentException("Year must be a positive integer.", nameof(year));
 
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("Football.GetTeamSchedule", connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    // Add parameters
+                    command.Parameters.AddWithValue("@TeamName", teamName);
+                    command.Parameters.AddWithValue("@Year", year);
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var schedule = TranslateGameSchedule(reader);
+
+                        if (schedule.Count == 0)
+                            throw new RecordNotFoundException($"No schedule found for team {teamName} in year {year}.");
+
+                        return schedule;
+                    }
+                }
+            }
+        }
+
+        private List<GameSchedule> TranslateGameSchedule(SqlDataReader reader)
+        {
+            var schedule = new List<GameSchedule>();
+
+            // Get column ordinals for efficiency
+            var gameDateOrdinal = reader.GetOrdinal("GameDate");
+            var gameLocationOrdinal = reader.GetOrdinal("GameLocation");
+            var teamNameOrdinal = reader.GetOrdinal("Team");
+            var teamScoreOrdinal = reader.GetOrdinal("TeamScore");
+            var teamTimeOfPossessionOrdinal = reader.GetOrdinal("TeamTimeOfPossession");
+            var opponentNameOrdinal = reader.GetOrdinal("Opponent");
+            var opponentScoreOrdinal = reader.GetOrdinal("OpponentScore");
+            var opponentTimeOfPossessionOrdinal = reader.GetOrdinal("OpponentTimeOfPossession");
+            var winnerOrdinal = reader.GetOrdinal("Winner");
+
+            while (reader.Read())
+            {
+                schedule.Add(new GameSchedule
+                {
+                    GameDate = reader.GetDateTime(gameDateOrdinal),
+                    GameLocation = reader.GetString(gameLocationOrdinal),
+                    TeamName = reader.GetString(teamNameOrdinal),
+                    TeamScore = reader.GetInt32(teamScoreOrdinal),
+                    TeamTimeOfPossession = reader.GetInt32(teamTimeOfPossessionOrdinal),
+                    OpponentName = reader.GetString(opponentNameOrdinal),
+                    OpponentScore = reader.GetInt32(opponentScoreOrdinal),
+                    OpponentTimeOfPossession = reader.GetInt32(opponentTimeOfPossessionOrdinal),
+                    Winner = reader.GetString(winnerOrdinal)
+                });
+            }
+
+            return schedule;
+        }
     }
+
+
+
+
+
+
 }
