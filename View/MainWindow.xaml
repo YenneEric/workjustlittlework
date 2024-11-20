@@ -7,12 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
     <Grid>
-        <local:HomePage x:Name="HomePage" Visibility="Visible" Width="Auto" Height="Auto" />
-        <local:InsertData x:Name="InsertData" Visibility="Hidden" Width="Auto" Height="Auto" />
-        <local:AddPlayerPage x:Name="AddPlayerPage" Visibility="Hidden" Width="Auto" Height="Auto" />
-        <local:MostTouchdowns x:Name="MostTouchdowns" Visibility="Hidden" Width="Auto" Height="Auto" />
-        <local:ConfrenceWins x:Name="ConfrenceWins" Visibility="Hidden" Width="Auto" Height="Auto" />
-        <local:MostTeamYards x:Name="MostTeamYards" Visibility="Hidden" Width="Auto" Height="Auto" />
-        <local:TopScoring x:Name="TopScoring" Visibility="Hidden" Width="Auto" Height="Auto" />
+        <local:HomePage x:Name="HomePage" Visibility="Visible" />
+        <local:InsertData x:Name="InsertData" Visibility="Hidden" />
+        <local:AddPlayerPage x:Name="AddPlayerPage" Visibility="Hidden" />
+        <local:AddGame x:Name="AddGame" Visibility="Hidden" />
+        <local:EditPlayer x:Name="EditPlayer" Visibility="Hidden" />
+
+        <local:MostTouchdowns x:Name="MostTouchdowns" Visibility="Hidden" />
+        <local:ConfrenceWins x:Name="ConfrenceWins" Visibility="Hidden" />
+        <local:MostTeamYards x:Name="MostTeamYards" Visibility="Hidden" />
+        <local:TopScoring x:Name="TopScoring" Visibility="Hidden" />
     </Grid>
 </Window>

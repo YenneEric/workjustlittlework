@@ -1,43 +1,81 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using PersonData;
+using PersonData; // For repository access
+using PersonData.Models; // For Team class
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for AddGame.xaml
-    /// </summary>
-    public partial class AddGame : Page
+    public partial class AddGame : UserControl
     {
         private readonly IInsert _insertRepository;
+        private readonly ISelect _selectRepository;
+
+        public event EventHandler? NavigateBack;
+
+        const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=tuesday;Integrated Security=SSPI;";
 
         public AddGame()
         {
             InitializeComponent();
-
-            // Initialize repository
-            const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=tuesday;Integrated Security=SSPI;";
             _insertRepository = new SqlInsertRepository(connectionString);
+            _selectRepository = new SqlSelectRepository(connectionString);
+            LoadTeams();
+        }
+
+        private void LoadTeams()
+        {
+            try
+            {
+                var teams = _selectRepository.GetTeams();
+                Team1ComboBox.ItemsSource = teams;
+                Team2ComboBox.ItemsSource = teams;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading teams: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void AddGameButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                // Validate and retrieve input values
                 var gameDate = GameDatePicker.SelectedDate;
-                var location = LocationTextBox.Text;
-                var isCanceled = CanceledCheckBox.IsChecked == true ? 1 : 0;
+                var location = GameLocationTextBox.Text;
+                var team1 = Team1ComboBox.SelectedItem as Team;
+                var team2 = Team2ComboBox.SelectedItem as Team;
 
-                if (gameDate == null || string.IsNullOrWhiteSpace(location))
+                int? team1Top = ParseNullableInt(Team1TopTextBox.Text);
+                int? team1Score = ParseNullableInt(Team1ScoreTextBox.Text);
+                int? team2Top = ParseNullableInt(Team2TopTextBox.Text);
+                int? team2Score = ParseNullableInt(Team2ScoreTextBox.Text);
+
+                if (gameDate == null || string.IsNullOrWhiteSpace(location) || team1 == null || team2 == null)
                 {
-                    MessageBox.Show("Please provide all required fields.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Please fill in all required fields.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                _insertRepository.CreateGame(gameDate.Value, location, isCanceled);
+                // Ensure home and away teams are not the same
+                if (team1.TeamId == team2.TeamId)
+                {
+                    MessageBox.Show("Home and Away teams cannot be the same.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
-                MessageBox.Show("Game added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                // Create game
+                var gameId = _insertRepository.CreateGame((DateTime)gameDate, location);
+
+                // Create GameTeam entries
+                _insertRepository.CreateGameTeam(gameId, team1.TeamName, teamTypeId: 1, topOfPossessionSec: team1Top, score: team1Score); // Home team
+                _insertRepository.CreateGameTeam(gameId, team2.TeamName, teamTypeId: 2, topOfPossessionSec: team2Top, score: team2Score); // Away team
+
+                MessageBox.Show("Game and teams added successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Navigate back to the previous page
+                NavigateBack?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {
@@ -45,13 +83,14 @@ namespace View
             }
         }
 
-        private void BackToInsertData(object sender, RoutedEventArgs e)
+        private int? ParseNullableInt(string input)
         {
-            var parentWindow = Window.GetWindow(this);
-            if (parentWindow != null)
-            {
-                parentWindow.Content = new InsertData();
-            }
+            return int.TryParse(input, out var value) ? value : (int?)null;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateBack?.Invoke(this, EventArgs.Empty);
         }
     }
 }

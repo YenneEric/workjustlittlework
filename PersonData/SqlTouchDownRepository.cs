@@ -132,20 +132,21 @@ namespace PersonData
             {
                 schedule.Add(new GameSchedule
                 {
-                    GameDate = reader.GetDateTime(gameDateOrdinal),
+                    GameDate = reader.GetDateTime(gameDateOrdinal).Date, // Only show the date
                     GameLocation = reader.GetString(gameLocationOrdinal),
                     TeamName = reader.GetString(teamNameOrdinal),
-                    TeamScore = reader.GetInt32(teamScoreOrdinal),
-                    TeamTimeOfPossession = reader.GetInt32(teamTimeOfPossessionOrdinal),
+                    TeamScore = reader.IsDBNull(teamScoreOrdinal) ? (int?)null : reader.GetInt32(teamScoreOrdinal),
+                    TeamTimeOfPossession = reader.IsDBNull(teamTimeOfPossessionOrdinal) ? (int?)null : reader.GetInt32(teamTimeOfPossessionOrdinal),
                     OpponentName = reader.GetString(opponentNameOrdinal),
-                    OpponentScore = reader.GetInt32(opponentScoreOrdinal),
-                    OpponentTimeOfPossession = reader.GetInt32(opponentTimeOfPossessionOrdinal),
+                    OpponentScore = reader.IsDBNull(opponentScoreOrdinal) ? (int?)null : reader.GetInt32(opponentScoreOrdinal),
+                    OpponentTimeOfPossession = reader.IsDBNull(opponentTimeOfPossessionOrdinal) ? (int?)null : reader.GetInt32(opponentTimeOfPossessionOrdinal),
                     Winner = reader.GetString(winnerOrdinal)
                 });
             }
 
             return schedule;
         }
+
     }
 
 

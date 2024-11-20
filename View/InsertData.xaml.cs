@@ -13,6 +13,11 @@ namespace View
         private readonly IStatRepository _repository;
         private readonly ISelect _selectRepository;
 
+        public event EventHandler? AddGame;
+        public event EventHandler? EditPlayer; // New event for Edit Player navigation
+
+
+
         // Properties for binding
         public List<PlayerDetails> PlayerDetails { get; set; } = new List<PlayerDetails>();
         public List<GameSchedule> ScheduleDetails { get; set; } = new List<GameSchedule>();
@@ -140,6 +145,18 @@ namespace View
         {
             AddPlayer?.Invoke(this, EventArgs.Empty);
         }
+
+
+        private void NavigateToAddGame(object sender, RoutedEventArgs e)
+        {
+            AddGame?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void NavigateToEditPlayer(object sender, RoutedEventArgs e)
+        {
+            EditPlayer?.Invoke(this, EventArgs.Empty);
+        }
+
     }
 
     // Class to hold player details for display

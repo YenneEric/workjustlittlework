@@ -8,16 +8,24 @@ namespace View
         {
             InitializeComponent();
 
+            // Subscribe to events for page navigation
             HomePage.CustomChange += NavigateFromHomePage;
             InsertData.CustomChange += NavigateBackToHome;
-            InsertData.AddPlayer += (s, e) => NavigateToAddPlayerPage(); // Anonymous method to match EventHandler
-            AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData(); // Anonymous method to match EventHandler
+            InsertData.AddPlayer += (s, e) => NavigateToAddPlayerPage();
+            InsertData.AddGame += (s, e) => NavigateToAddGamePage();
+            InsertData.EditPlayer += (s, e) => NavigateToEditPlayer();
+
+            AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData();
+            AddGame.NavigateBack += (s, e) => NavigateBackToInsertData();
+            EditPlayer.NavigateBack += (s, e) => NavigateBackToInsertData();
+
         }
 
         private void NavigateFromHomePage(object? sender, CustomizeEventArgs e)
         {
             HideAllPages();
 
+            // Show the appropriate page based on the button clicked
             switch (e.Name)
             {
                 case "InsertButton":
@@ -50,21 +58,39 @@ namespace View
             AddPlayerPage.Visibility = Visibility.Visible;
         }
 
+        private void NavigateToAddGamePage()
+        {
+            HideAllPages();
+            AddGame.Visibility = Visibility.Visible;
+        }
+
+        private void NavigateToEditPlayer()
+        {
+            HideAllPages();
+            EditPlayer.Visibility = Visibility.Visible;
+        }
+
         private void NavigateBackToInsertData()
         {
             HideAllPages();
             InsertData.Visibility = Visibility.Visible;
+
+            // Refresh data on the InsertData page to ensure it reflects any updates
+           // InsertData.RefreshData();
         }
 
         private void HideAllPages()
         {
+            // Hide all pages to prepare for navigation
             HomePage.Visibility = Visibility.Hidden;
             InsertData.Visibility = Visibility.Hidden;
             AddPlayerPage.Visibility = Visibility.Hidden;
+            AddGame.Visibility = Visibility.Hidden; // Ensure AddGamePage is hidden
             MostTouchdowns.Visibility = Visibility.Hidden;
             ConfrenceWins.Visibility = Visibility.Hidden;
             MostTeamYards.Visibility = Visibility.Hidden;
             TopScoring.Visibility = Visibility.Hidden;
+            EditPlayer.Visibility = Visibility.Hidden;
         }
     }
 }
