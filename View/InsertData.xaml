@@ -29,6 +29,7 @@
         <ListView ItemsSource="{Binding PlayerDetails}" Grid.Row="1" Grid.Column="0" Margin="10">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Player ID" DisplayMemberBinding="{Binding PlayerId}" />
                     <GridViewColumn Header="Player Name" DisplayMemberBinding="{Binding PlayerName}" />
                     <GridViewColumn Header="Position" DisplayMemberBinding="{Binding Position}" />
                     <GridViewColumn Header="Jersey Number" DisplayMemberBinding="{Binding JerseyNumber}" />
