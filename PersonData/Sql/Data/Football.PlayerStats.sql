@@ -129,11 +129,28 @@ VALUES
 (256, 8, 16, 20, 40, 200, 7, 0, 1, 0, 2, 1, 0), -- QB
 (257, 8, 16, 90, 0, 0, 6, 0, 0, 0, 2, 0, 0), -- RB
 (258, 8, 16, 60, 30, 0, 5, 0, 0, 0, 1, 0, 0), -- WR
-(259, 8, 16, 0, 60, 0, 5, 0, 0, 0, 1, 0, 0); -- WR
+(259, 8, 16, 0, 60, 0, 5, 0, 0, 0, 1, 0, 0), -- WR
 
 
 
--- Insert data into the PlayerStats table
+
+
+--Game 9
+
+--(9, 2, 1, 1200, 28), -- Georgia Bulldogs (Home)
+--(9, 3, 2, 1100, 20), -- Florida Gators (Away)
+
+(18, 9, 2, 50, 40, 200, 7, 1, 1, 0, 20, 1, 0), -- QB
+(19, 9, 2, 80, 0, 0, 6, 0, 0, 0, 2, 0, 0), -- RB
+(20, 9, 2, 60, 20, 0, 6, 0, 0, 0, 1, 0, 0), -- RB
+(21, 9, 2, 0, 90, 0, 5, 0, 0, 0, 1, 0, 0), -- WR
+(22, 9, 2, 0, 70, 0, 4, 0, 0, 0, 1, 0, 0), -- WR
+(23, 9, 2, 0, 50, 0, 5, 1, 0, 1, 0, 0, 0); -- Defensive Player
+
+
+
+
+
 MERGE INTO Football.PlayerStats AS PS
 USING @PlayerStatsStaging AS S
    ON PS.TeamPlayerId = S.TeamPlayerId AND PS.GameId = S.GameId AND PS.TeamId = S.TeamId

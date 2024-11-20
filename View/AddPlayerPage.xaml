@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="View.AddPlayerPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="445" d:DesignWidth="580">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Add Player" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" />
+
+            <TextBlock Text="Player Name" />
+            <TextBox Name="PlayerNameTextBox" Margin="0,5,0,20" />
+
+            <TextBlock Text="Position" />
+            <ComboBox Name="PositionComboBox" Margin="0,5,0,20" />
+
+            <TextBlock Text="Team" />
+            <ComboBox Name="TeamComboBox" Margin="0,5,0,20" />
+
+            <TextBlock Text="Year" />
+            <ComboBox Name="YearComboBox" Margin="0,5,0,20" />
+
+            <TextBlock Text="Jersey Number" />
+            <TextBox Name="JerseyNumberTextBox" Margin="0,5,0,20" />
+
+            <Button Content="Add Player" Name="AddPlayerButton" Click="AddPlayerButton_Click" />
+            <Button Content="Back" Click="BackToInsertData" Margin="0,10,0,0" />
+        </StackPanel>
+    </Grid>
+</UserControl>

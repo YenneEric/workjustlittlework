@@ -161,6 +161,27 @@ VALUES
 ('Saruman', 'Punter'),
 
 -- Set 9
+
+
+('Clark Griswold', 'Quarterback'),
+('Ellen Griswold', 'Running Back'),
+('Rusty Griswold', 'Running Back'),
+('Audrey Griswold', 'Wide Receiver'),
+('Cousin Eddie', 'Wide Receiver'),
+('Catherine Johnson', 'Wide Receiver'),
+('Uncle Lewis', 'Tight End'),
+('Aunt Bethany', 'Tight End'),
+('Ruby Sue', 'Tight End'),
+('Todd Chester', 'Linebacker'),
+('Margo Chester', 'Linebacker'),
+('Frank Shirley', 'Cornerback'),
+('Mary', 'Cornerback'),
+('Rocky', 'Safety'),
+('Snots', 'Safety'),
+('Art', 'Kicker'),
+('Eddie Jr.', 'Punter'),
+
+
 ('Sherlock Holmes', 'Quarterback'),
 ('John Watson', 'Running Back'),
 ('Mycroft Holmes', 'Running Back'),
@@ -236,24 +257,7 @@ VALUES
 ('BB-8', 'Kicker'),
 ('R2-D2', 'Punter'),
 
--- Set 13
-('Clark Griswold', 'Quarterback'),
-('Ellen Griswold', 'Running Back'),
-('Rusty Griswold', 'Running Back'),
-('Audrey Griswold', 'Wide Receiver'),
-('Cousin Eddie', 'Wide Receiver'),
-('Catherine Johnson', 'Wide Receiver'),
-('Uncle Lewis', 'Tight End'),
-('Aunt Bethany', 'Tight End'),
-('Ruby Sue', 'Tight End'),
-('Todd Chester', 'Linebacker'),
-('Margo Chester', 'Linebacker'),
-('Frank Shirley', 'Cornerback'),
-('Mary', 'Cornerback'),
-('Rocky', 'Safety'),
-('Snots', 'Safety'),
-('Art', 'Kicker'),
-('Eddie Jr.', 'Punter'),
+
 
 -- Set 14
 ('Tony Soprano', 'Quarterback'),

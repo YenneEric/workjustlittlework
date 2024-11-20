@@ -1,85 +1,76 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
 
-            HomePage.CustomChange += InsertClick;
-            InsertData.CustomChange += BackHome;
-            MostTouchdowns.CustomChange += BackHome;
-            TopScoring.CustomChange += BackHome;
-            ConfrenceWins.CustomChange += BackHome;
-            MostTeamYards.CustomChange += BackHome;
+            HomePage.CustomChange += NavigateFromHomePage;
+            InsertData.CustomChange += NavigateBackToHome;
+            InsertData.AddPlayer += (s, e) => NavigateToAddPlayerPage();
+            AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData();
 
-
+            // Add CustomChange handlers for other pages
+            MostTouchdowns.CustomChange += NavigateBackToHome;
+            TopScoring.CustomChange += NavigateBackToHome;
+            ConfrenceWins.CustomChange += NavigateBackToHome;
+            MostTeamYards.CustomChange += NavigateBackToHome;
         }
 
-
-        private void InsertClick(object? sender, CustomizeEventArgs e)
+        private void NavigateFromHomePage(object? sender, CustomizeEventArgs e)
         {
-            string name = e.Name;
-            
+            HideAllPages();
 
-
-            if(name == "InsertButton")
+            switch (e.Name)
             {
-                HomePage.Visibility = Visibility.Hidden;
-                InsertData.Visibility = Visibility.Visible;
+                case "InsertButton":
+                    InsertData.Visibility = Visibility.Visible;
+                    break;
+                case "MostTd":
+                    MostTouchdowns.Visibility = Visibility.Visible;
+                    break;
+                case "TopScoring":
+                    TopScoring.Visibility = Visibility.Visible;
+                    break;
+                case "ConfrenceWins":
+                    ConfrenceWins.Visibility = Visibility.Visible;
+                    break;
+                case "MostTeamYards":
+                    MostTeamYards.Visibility = Visibility.Visible;
+                    break;
             }
-            else if(name == "MostTd")
-            {
-                HomePage.Visibility = Visibility.Hidden;
-                MostTouchdowns.Visibility = Visibility.Visible;
-            }
-            else if (name == "TopScoring")
-            {
-                HomePage.Visibility = Visibility.Hidden;
-                TopScoring.Visibility = Visibility.Visible;
-            }
-            else if (name == "ConfrenceWins")
-            {
-                HomePage.Visibility = Visibility.Hidden;
-                ConfrenceWins.Visibility = Visibility.Visible;
-            }
-            else if (name == "MostTeamYards")
-            {
-                HomePage.Visibility = Visibility.Hidden;
-                MostTeamYards.Visibility = Visibility.Visible;
-            }
-
-
-
-
         }
 
-        private void BackHome(object? sender, RoutedEventArgs e)
+        private void NavigateBackToHome(object? sender, RoutedEventArgs e)
         {
+            HideAllPages();
             HomePage.Visibility = Visibility.Visible;
+        }
+
+        private void NavigateToAddPlayerPage()
+        {
+            HideAllPages();
+            AddPlayerPage.Visibility = Visibility.Visible;
+        }
+
+        private void NavigateBackToInsertData()
+        {
+            HideAllPages();
+            InsertData.Visibility = Visibility.Visible;
+        }
+
+        private void HideAllPages()
+        {
+            HomePage.Visibility = Visibility.Hidden;
             InsertData.Visibility = Visibility.Hidden;
+            AddPlayerPage.Visibility = Visibility.Hidden;
             MostTouchdowns.Visibility = Visibility.Hidden;
-            TopScoring.Visibility = Visibility.Hidden;
             ConfrenceWins.Visibility = Visibility.Hidden;
             MostTeamYards.Visibility = Visibility.Hidden;
+            TopScoring.Visibility = Visibility.Hidden;
         }
-
-
-
-
     }
 }
