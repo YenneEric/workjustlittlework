@@ -22,13 +22,12 @@ namespace View
         private string? _currentTeamName;
         private int? _currentYear;
 
-        public PlayerDetails? SelectedPlayer { get; set; } // Tracks the selected player
-
         // Properties for binding
         public List<PlayerDetails> PlayerDetails { get; set; } = new List<PlayerDetails>();
         public List<GameSchedule> ScheduleDetails { get; set; } = new List<GameSchedule>();
         public List<string> Teams { get; set; } = new List<string>();
         public List<int> Years { get; set; } = new List<int>();
+        public string TeamInfo { get; set; } = string.Empty;
 
         public event EventHandler<RoutedEventArgs>? CustomChange;
         public event EventHandler? AddPlayer;
@@ -108,6 +107,11 @@ namespace View
                 // Load game schedule
                 ScheduleDetails = _repository.FetchGameSchedule(teamName, year).ToList();
 
+                var conference = _selectRepository.GetConferences(confId: team.ConfId).FirstOrDefault();
+                string conferenceName = conference?.ConfName ?? "Unknown Conference";
+                TeamInfo = $"Team: {team.TeamName}, Location: {team.Location}, Mascot: {team.Mascot}, Conference: {conferenceName}";
+
+
                 UpdateData();
             }
             catch (Exception ex)
@@ -121,6 +125,7 @@ namespace View
         {
             PlayerDetails.Clear();
             ScheduleDetails.Clear();
+            TeamInfo = string.Empty;
             UpdateData();
         }
 
@@ -181,6 +186,10 @@ namespace View
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
+            // Refresh the dropdowns for team name and year
+            LoadTeamsAndYears();
+
+            // Reload the player and schedule data if team and year are selected
             if (!string.IsNullOrWhiteSpace(_currentTeamName) && _currentYear.HasValue)
             {
                 LoadData(_currentTeamName, _currentYear.Value);
