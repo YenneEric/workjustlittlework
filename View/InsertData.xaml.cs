@@ -14,9 +14,9 @@ namespace View
         private readonly ISelect _selectRepository;
 
         public event EventHandler? AddGame;
-        public event EventHandler? EditPlayer; // New event for Edit Player navigation
+        public event EventHandler? EditPlayer;
 
-
+        public PlayerDetails? SelectedPlayer { get; set; } // Tracks the selected player
 
         // Properties for binding
         public List<PlayerDetails> PlayerDetails { get; set; } = new List<PlayerDetails>();
@@ -36,7 +36,7 @@ namespace View
             _selectRepository = new SqlSelectRepository(connectionString);
 
             LoadTeamsAndYears();
-            ClearData(); // Initialize with empty data
+            ClearData();
         }
 
         // Load teams and years into dropdowns
@@ -86,6 +86,7 @@ namespace View
                         return player != null
                             ? new PlayerDetails
                             {
+                                PlayerId = player.PlayerId,
                                 PlayerName = player.PlayerName,
                                 Position = player.Position,
                                 JerseyNumber = tp.JerseyNumber
@@ -117,11 +118,10 @@ namespace View
         // Update the UI with new data
         private void UpdateData()
         {
-            DataContext = null; // Force UI refresh
+            DataContext = null;
             DataContext = this;
         }
 
-        // Handle changes to team or year selection
         private void OnTeamOrYearChanged(object sender, SelectionChangedEventArgs e)
         {
             if (TeamComboBox.SelectedItem is string teamName && YearComboBox.SelectedItem is int year)
@@ -134,18 +134,15 @@ namespace View
             }
         }
 
-        // Navigate back to the home page
         private void BackToHomePage(object sender, RoutedEventArgs e)
         {
             CustomChange?.Invoke(this, new RoutedEventArgs());
         }
 
-        // Navigate to the Add Player page
         private void NavigateToAddPlayer(object sender, RoutedEventArgs e)
         {
             AddPlayer?.Invoke(this, EventArgs.Empty);
         }
-
 
         private void NavigateToAddGame(object sender, RoutedEventArgs e)
         {
@@ -154,14 +151,19 @@ namespace View
 
         private void NavigateToEditPlayer(object sender, RoutedEventArgs e)
         {
+            if (SelectedPlayer == null)
+            {
+                MessageBox.Show("Please select a player to edit.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             EditPlayer?.Invoke(this, EventArgs.Empty);
         }
-
     }
 
-    // Class to hold player details for display
     public class PlayerDetails
     {
+        public int PlayerId { get; set; }
         public string PlayerName { get; set; }
         public string Position { get; set; }
         public int JerseyNumber { get; set; }
