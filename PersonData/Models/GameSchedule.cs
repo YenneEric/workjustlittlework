@@ -2,6 +2,7 @@
 
 public class GameSchedule
 {
+    public int GameId { get; set; } // New property for Game ID
     public DateTime GameDate { get; set; }
     public string GameLocation { get; set; }
     public string TeamName { get; set; }
@@ -14,7 +15,7 @@ public class GameSchedule
 
     public override string ToString()
     {
-        return $"Date: {GameDate:MM/dd/yyyy}, Location: {GameLocation}, Team: {TeamName}, " +
+        return $"Game ID: {GameId}, Date: {GameDate:MM/dd/yyyy}, Location: {GameLocation}, Team: {TeamName}, " +
                $"Opponent: {OpponentName}, Score: {TeamScore}-{OpponentScore}, Winner: {Winner}, " +
                $"Team TOP: {TeamTimeOfPossession}s, Opponent TOP: {OpponentTimeOfPossession}s";
     }

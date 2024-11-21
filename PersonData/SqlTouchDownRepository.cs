@@ -142,6 +142,7 @@ namespace PersonData
             var schedule = new List<GameSchedule>();
 
             // Get column ordinals for efficiency
+            var gameIdOrdinal = reader.GetOrdinal("GameId");
             var gameDateOrdinal = reader.GetOrdinal("GameDate");
             var gameLocationOrdinal = reader.GetOrdinal("GameLocation");
             var teamNameOrdinal = reader.GetOrdinal("Team");
@@ -156,6 +157,7 @@ namespace PersonData
             {
                 schedule.Add(new GameSchedule
                 {
+                    GameId = reader.GetInt32(gameIdOrdinal), // Include GameId
                     GameDate = reader.GetDateTime(gameDateOrdinal).Date, // Only show the date
                     GameLocation = reader.GetString(gameLocationOrdinal),
                     TeamName = reader.GetString(teamNameOrdinal),
@@ -173,9 +175,11 @@ namespace PersonData
 
     }
 
-
-
-
-
-
 }
+
+
+
+
+
+
+

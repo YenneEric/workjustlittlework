@@ -47,6 +47,10 @@
                     <GridViewColumn Header="Team Score" DisplayMemberBinding="{Binding TeamScore}" />
                     <GridViewColumn Header="Opponent Score" DisplayMemberBinding="{Binding OpponentScore}" />
                     <GridViewColumn Header="Winner" DisplayMemberBinding="{Binding Winner}" />
+                    <!-- Time of Possession -->
+                    <GridViewColumn Header="Time of Possession (s)" DisplayMemberBinding="{Binding TeamTimeOfPossession}" />
+                    <!-- Game ID -->
+                    <GridViewColumn Header="Game ID" DisplayMemberBinding="{Binding GameId}" />
                 </GridView>
             </ListView.View>
         </ListView>

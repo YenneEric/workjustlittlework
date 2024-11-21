@@ -4,7 +4,7 @@
 AS
 BEGIN
     SELECT DISTINCT
-        g.GameId,
+        g.GameId, -- Include GameId
         g.Date AS GameDate,
         g.Location AS GameLocation,
         t1.TeamName AS Team,
@@ -27,5 +27,6 @@ BEGIN
     INNER JOIN Season s ON tp.SeasonId = s.SeasonId
     WHERE t1.TeamName = @TeamName
       AND s.Year = @Year
+      AND g.Date BETWEEN CONCAT(@Year, '-01-01') AND CONCAT(@Year, '-12-31') -- Ensure the game's date is strictly within the year
     ORDER BY g.Date;
 END;
