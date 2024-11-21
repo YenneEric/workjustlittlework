@@ -19,7 +19,7 @@ VALUES
 (3, 6, 2, 1100, 24), -- Michigan Wolverines (Away)
 (4, 7, 1, 1150, 27), -- Penn State Nittany Lions (Home)
 (4, 8, 2, 1250, 30), -- Wisconsin Badgers (Away)
-(5, 9, 1, 1050, 20), -- Kansas State Wildcats (Home)
+(5, 9, 1, 1050, 35), -- Kansas State Wildcats (Home)
 (5, 10, 2, 1350, 34), -- Kansas Jayhawks (Away)
 (6, 11, 1, 1300, 24), -- Colorado Buffaloes (Home)
 (6, 12, 2, 1100, 27), -- Iowa State Cyclones (Away)
