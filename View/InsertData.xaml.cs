@@ -151,12 +151,7 @@ namespace View
 
         private void NavigateToEditPlayer(object sender, RoutedEventArgs e)
         {
-            if (SelectedPlayer == null)
-            {
-                MessageBox.Show("Please select a player to edit.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
+         
             EditPlayer?.Invoke(this, EventArgs.Empty);
         }
     }

@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
     <Grid>
+
         <local:HomePage x:Name="HomePage" Visibility="Visible" />
         <local:InsertData x:Name="InsertData" Visibility="Hidden" />
         <local:AddPlayerPage x:Name="AddPlayerPage" Visibility="Hidden" />

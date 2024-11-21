@@ -3,16 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:View"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Button Content="Button"
-                Click="Button_Click"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="10,10,0,0"
-                Width="75"
-                Height="25"/>
+        <StackPanel Margin="20">
+            <TextBlock Text="Edit Player" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" />
+
+            <!-- Player ID -->
+            <TextBlock Text="Player ID:" />
+            <TextBox x:Name="PlayerIdTextBox" IsReadOnly="False" Margin="0,0,0,10" />
+
+            <!-- Player Name -->
+            <TextBlock Text="Player Name:" />
+            <TextBox x:Name="PlayerNameTextBox" Margin="0,0,0,10" />
+
+            <!-- Position Dropdown -->
+            <TextBlock Text="Position:" />
+            <ComboBox x:Name="PositionComboBox" Margin="0,0,0,10">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="Quarterback" />
+                    <ComboBoxItem Content="Running Back" />
+                    <ComboBoxItem Content="Wide Receiver" />
+                    <ComboBoxItem Content="Tight End" />
+                    <ComboBoxItem Content="Linebacker" />
+                    <ComboBoxItem Content="Cornerback" />
+                    <ComboBoxItem Content="Safety" />
+                    <ComboBoxItem Content="Kicker" />
+                    <ComboBoxItem Content="Punter" />
+                </ComboBox.Items>
+            </ComboBox>
+
+            <!-- Save Button -->
+            <Button Content="Save" Click="SaveButton_Click" Width="100" Margin="0,20,0,10" />
+
+            <!-- Back Button -->
+            <Button Content="Back" Click="BackButton_Click" Width="75" Margin="0,20,0,10" />
+        </StackPanel>
     </Grid>
 </UserControl>
