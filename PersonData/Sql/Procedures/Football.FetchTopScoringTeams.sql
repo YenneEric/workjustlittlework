@@ -4,24 +4,20 @@ AS
 BEGIN
     SELECT 
         t.TeamName,
-        SUM(CAST(gt.Score AS INT)) AS TotalPoints,  -- Explicit casting to INT
+        SUM(CAST(gt.Score AS INT)) AS TotalPoints,
         COUNT(gt.GameId) AS GamesPlayed,
-        AVG(CAST(gt.Score AS DECIMAL(10, 2))) AS AveragePoints,  -- Explicit casting for AVG
+        AVG(CAST(gt.Score AS DECIMAL(10, 2))) AS AveragePoints,
         RANK() OVER (ORDER BY SUM(CAST(gt.Score AS INT)) DESC) AS TeamRank
     FROM 
-        GameTeam gt
-    JOIN 
-        Game g ON gt.GameId = g.GameId
-    JOIN 
-        Team t ON gt.TeamId = t.TeamId
-    JOIN 
-        TeamPlayer tp ON tp.TeamId = t.TeamId
-    JOIN 
-        Season s ON tp.SeasonId = s.SeasonId
+        Football.GameTeam gt
+    INNER JOIN 
+        Football.Game g ON gt.GameId = g.GameId
+    INNER JOIN 
+        Football.Team t ON gt.TeamId = t.TeamId
     WHERE 
-        s.Year = @Year
+        g.[Date] BETWEEN DATEFROMPARTS(@Year, 1, 1) AND DATEFROMPARTS(@Year, 12, 31)
     GROUP BY 
-        t.TeamId, t.TeamName, s.Year
+        t.TeamName
     ORDER BY 
         TotalPoints DESC;
 END;

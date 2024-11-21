@@ -46,13 +46,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAddressRepository.cs" />
+    <Compile Include="IConferenceRepository.cs" />
     <Compile Include="IInsert.cs" />
     <Compile Include="ISelect.cs" />
+    <Compile Include="ITeamYardsRepository.cs" />
     <Compile Include="IUpdate.cs" />
+    <Compile Include="Models\ConferenceTeamRank.cs" />
     <Compile Include="Models\GameSchedule.cs" />
+    <Compile Include="Models\MostTeamYards.cs" />
     <Compile Include="Models\PlayerStatsPerTeam.cs" />
     <Compile Include="Models\PlayerTouchdownRank.cs" />
     <Compile Include="Models\TopScoringTeamRank.cs" />
+    <Compile Include="SqlConferenceWinsRepository.cs" />
     <Compile Include="SqlInsertRepository.cs" />
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="IStatRepository.cs" />
@@ -70,6 +75,7 @@
     <Compile Include="Models\TeamType.cs" />
     <Compile Include="RecordNotFoundException.cs" />
     <Compile Include="SqlAddressRepository.cs" />
+    <Compile Include="SqlMostTeamYards .cs" />
     <Compile Include="SqlPersonRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlSelectRepository.cs" />
@@ -129,6 +135,8 @@
     <Content Include="Sql\Procedures\Football.CreateTeamPlayer.sql" />
     <Content Include="Sql\Procedures\Football.EditGameWithId.sql" />
     <Content Include="Sql\Procedures\Football.EditStats.sql" />
+    <Content Include="Sql\Procedures\Football.FetchConferenceTeamRank.sql" />
+    <Content Include="Sql\Procedures\Football.FetchMostTeamYards.sql" />
     <Content Include="Sql\Procedures\Football.FetchTopScoringTeams.sql" />
     <Content Include="Sql\Procedures\Football.FetchTouchdowns.sql" />
     <Content Include="Sql\Procedures\Football.GetSchedule.sql" />

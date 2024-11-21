@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using PersonData.Models;
+using System.Windows;
 
 namespace View
 {
@@ -23,8 +24,9 @@ namespace View
             MostTouchdowns.CustomChange += NavigateBackToHome;
             MostTeamYards.CustomChange += NavigateBackToHome;
             TopScoring.CustomChange += NavigateBackToHome;
-            ConfrenceWins.CustomChange += NavigateBackToHome;
+            //ConfrenceWins.CustomChange += NavigateBackToHome;
             AddSeasonTeamOrConference.CustomChange += NavigateBackToHome;
+            ConfrenceTeamRank.CustomChange += NavigateBackToHome;
 
 
             AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData();
@@ -58,16 +60,16 @@ namespace View
                     TopScoring.Visibility = Visibility.Visible;
                     break;
                 case "ConfrenceWins":
-                    ConfrenceWins.Visibility = Visibility.Visible;
+                    ConfrenceTeamRank.Visibility = Visibility.Visible;
                     break;
                 case "MostTeamYards":
                     MostTeamYards.Visibility = Visibility.Visible;
                     break;
                 case "AddSeasonTeamOrConference": // Correct button name
                     AddSeasonTeamOrConference.Visibility = Visibility.Visible; // Show the correct UserControl
-            break;
+                    break;
 
-                    
+
             }
         }
 
@@ -94,7 +96,7 @@ namespace View
             HideAllPages();
             EditPlayer.Visibility = Visibility.Visible;
         }
-        
+
         private void NavigateToEditGame()
         {
             HideAllPages();
@@ -120,7 +122,7 @@ namespace View
             InsertData.Visibility = Visibility.Visible;
 
             // Refresh data on the InsertData page to ensure it reflects any updates
-           // InsertData.RefreshData();
+            // InsertData.RefreshData();
         }
 
         private void HideAllPages()
@@ -131,7 +133,7 @@ namespace View
             AddPlayerPage.Visibility = Visibility.Hidden;
             AddGame.Visibility = Visibility.Hidden; // Ensure AddGamePage is hidden
             MostTouchdowns.Visibility = Visibility.Hidden;
-            ConfrenceWins.Visibility = Visibility.Hidden;
+            ConfrenceTeamRank.Visibility = Visibility.Hidden;
             MostTeamYards.Visibility = Visibility.Hidden;
             TopScoring.Visibility = Visibility.Hidden;
             EditPlayer.Visibility = Visibility.Hidden;

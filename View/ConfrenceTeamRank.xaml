@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="View.MostTeamYards"
+﻿<UserControl x:Class="View.ConfrenceTeamRank"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -17,27 +17,33 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Filter Section -->
+        <!-- Title -->
+        <TextBlock Grid.ColumnSpan="3" Text="" 
+                   FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+
+        <!-- Filter Controls -->
         <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-            <TextBlock Text="Year:" VerticalAlignment="Center" FontSize="16" Margin="0,0,10,0"/>
+            <TextBlock Text="Year:" VerticalAlignment="Center" FontSize="16" Margin="0,0,5,0" />
             <ComboBox x:Name="YearComboBox" Width="120" Margin="0,0,20,0" />
 
-            <Button Content="Fetch Team Yards" Click="FetchTeamYards_Click" Width="160" Height="30" Margin="0,0,10,0" />
+            <TextBlock Text="Conference:" VerticalAlignment="Center" FontSize="16" Margin="0,0,5,0" />
+            <ComboBox x:Name="ConferenceComboBox" Width="150" Margin="0,0,20,0" />
+
+            <Button Content="Fetch Rankings" Click="FetchConferenceTeamRanks_Click" Margin="0,0,10,0" />
         </StackPanel>
 
-        <!-- Results Section -->
-        <DataGrid x:Name="teamYardsDataGrid" Grid.Row="1" Grid.ColumnSpan="3" 
-                  AutoGenerateColumns="False" IsReadOnly="True" Margin="0,10">
+        <!-- DataGrid for Results -->
+        <DataGrid x:Name="conferenceRankDataGrid" Grid.Row="1" Grid.ColumnSpan="3" 
+                  AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Rank" Binding="{Binding Rank}" />
                 <DataGridTextColumn Header="Team Name" Binding="{Binding TeamName}" />
-                <DataGridTextColumn Header="Yards" Binding="{Binding Yards}" />
+                <DataGridTextColumn Header="Wins" Binding="{Binding Wins}" />
+                <DataGridTextColumn Header="Conference Rank" Binding="{Binding ConferenceRank}" />
             </DataGrid.Columns>
         </DataGrid>
 
         <!-- Back Button -->
-        <Button Content="Back to Home Page" Grid.Row="2" Grid.Column="2" 
-                HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" 
-                Click="BackToHomePage" />
+        <Button Content="Back to Home Page" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" 
+                Margin="10" Click="BackToHomePage"/>
     </Grid>
 </UserControl>
