@@ -99,6 +99,7 @@ namespace View
                     "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 NavigateBack?.Invoke(this, EventArgs.Empty);
+
             }
             catch (Exception ex)
             {

@@ -19,7 +19,8 @@ namespace View
         public event EventHandler? ViewStats;
         public event EventHandler? EditStats;
 
-
+        private string? _currentTeamName;
+        private int? _currentYear;
 
 
 
@@ -71,6 +72,12 @@ namespace View
         {
             try
             {
+
+                _currentTeamName = teamName;
+                _currentYear = year;
+
+
+
                 // Load player details
                 var team = _selectRepository.GetTeams(teamName: teamName).FirstOrDefault();
                 if (team == null)
@@ -180,6 +187,18 @@ namespace View
 
             EditStats?.Invoke(this, EventArgs.Empty);
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(_currentTeamName) && _currentYear.HasValue)
+            {
+                LoadData(_currentTeamName, _currentYear.Value);
+            }
+            else
+            {
+            }
+        }
+
     }
 
     public class PlayerDetails

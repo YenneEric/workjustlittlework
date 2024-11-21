@@ -23,7 +23,10 @@
             <ComboBox x:Name="TeamComboBox" Width="150" SelectionChanged="OnTeamOrYearChanged" />
             <TextBlock Text="Year:" VerticalAlignment="Center" Margin="10,0,5,0" />
             <ComboBox x:Name="YearComboBox" Width="100" SelectionChanged="OnTeamOrYearChanged" />
+            <!-- Refresh Button -->
+            <Button Content="Refresh" Click="RefreshButton_Click" Width="100" Margin="20,0,0,0" />
         </StackPanel>
+
 
         <!-- Player Details ListView -->
         <ListView ItemsSource="{Binding PlayerDetails}" Grid.Row="1" Grid.Column="0" Margin="10">
