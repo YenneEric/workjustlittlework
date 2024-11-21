@@ -173,6 +173,69 @@ namespace PersonData
             return schedule;
         }
 
+        public IReadOnlyList<GamePlayerStats> FetchPlayerStatsByGameAndTeam(int gameId, string teamName, int? playerId = null)
+        {
+            if (string.IsNullOrWhiteSpace(teamName))
+                throw new ArgumentException("Team name cannot be null or empty.", nameof(teamName));
+
+            if (gameId <= 0)
+                throw new ArgumentException("Game ID must be a positive integer.", nameof(gameId));
+
+            var playerStats = new List<GamePlayerStats>();
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("Football.GetPlayerStatsByGameAndTeam", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters
+                    command.Parameters.AddWithValue("@GameId", gameId);
+                    command.Parameters.AddWithValue("@TeamName", teamName);
+
+                    // Add optional PlayerId parameter
+                    if (playerId.HasValue)
+                        command.Parameters.AddWithValue("@PlayerId", playerId.Value);
+                    else
+                        command.Parameters.AddWithValue("@PlayerId", DBNull.Value);
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            playerStats.Add(new GamePlayerStats(
+                                gameId,
+                                reader.GetInt32(reader.GetOrdinal("PlayerId")), // Fetch PlayerId
+                                reader.GetString(reader.GetOrdinal("PlayerName")),
+                                reader.GetString(reader.GetOrdinal("Position")),
+                                reader.IsDBNull(reader.GetOrdinal("RushingYards")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("RushingYards")),
+                                reader.IsDBNull(reader.GetOrdinal("ReceivingYards")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("ReceivingYards")),
+                                reader.IsDBNull(reader.GetOrdinal("ThrowingYards")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("ThrowingYards")),
+                                reader.IsDBNull(reader.GetOrdinal("Tackles")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Tackles")),
+                                reader.IsDBNull(reader.GetOrdinal("Sacks")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Sacks")),
+                                reader.IsDBNull(reader.GetOrdinal("Turnovers")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Turnovers")),
+                                reader.IsDBNull(reader.GetOrdinal("InterceptionsCaught")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("InterceptionsCaught")),
+                                reader.IsDBNull(reader.GetOrdinal("Touchdowns")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Touchdowns")),
+                                reader.IsDBNull(reader.GetOrdinal("Punts")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Punts")),
+                                reader.IsDBNull(reader.GetOrdinal("FieldGoalsMade")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("FieldGoalsMade"))
+                            ));
+                        }
+                    }
+                }
+            }
+
+            return playerStats;
+        }
+
+
+
+
+
+
+
+
     }
 
 }

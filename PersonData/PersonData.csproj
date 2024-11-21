@@ -50,6 +50,7 @@
     <Compile Include="ISelect.cs" />
     <Compile Include="IUpdate.cs" />
     <Compile Include="Models\GameSchedule.cs" />
+    <Compile Include="Models\PlayerStatsPerTeam.cs" />
     <Compile Include="Models\PlayerTouchdownRank.cs" />
     <Compile Include="SqlInsertRepository.cs" />
     <Compile Include="IPersonRepository.cs" />
@@ -136,6 +137,7 @@
     <Content Include="Sql\Procedures\Football.SelectTeam.sql" />
     <Content Include="Sql\Procedures\Football.SelectTeamPlayer.sql" />
     <Content Include="Sql\Procedures\Football.SelectTeamType.sql" />
+    <Content Include="Sql\Procedures\Football.ShowPlayerStatsforGame.sql" />
     <Content Include="Sql\Procedures\Football.UpdateGame.sql" />
     <Content Include="Sql\Procedures\Football.UpdateGameTeam.sql" />
     <Content Include="Sql\Procedures\Football.UpdatePlayer.sql" />
