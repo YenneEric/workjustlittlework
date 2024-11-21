@@ -13,9 +13,5 @@ namespace PersonData
         IReadOnlyList<PlayerTouchdownRank> FetchTouchdownPlayer(string pos, int year);
 
         IReadOnlyList<GameSchedule> FetchGameSchedule(string teamName, int year);
-
-
-
-
     }
 }

@@ -14,12 +14,19 @@ namespace View
             InsertData.AddPlayer += (s, e) => NavigateToAddPlayerPage();
             InsertData.AddGame += (s, e) => NavigateToAddGamePage();
             InsertData.EditPlayer += (s, e) => NavigateToEditPlayer();
+            MostTouchdowns.CustomChange += NavigateBackToHome;
+            MostTeamYards.CustomChange += NavigateBackToHome;
+            TopScoring.CustomChange += NavigateBackToHome;
+            ConfrenceWins.CustomChange += NavigateBackToHome;
+
 
             AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData();
             AddGame.NavigateBack += (s, e) => NavigateBackToInsertData();
             EditPlayer.NavigateBack += (s, e) => NavigateBackToInsertData();
 
         }
+
+        
 
         private void NavigateFromHomePage(object? sender, CustomizeEventArgs e)
         {

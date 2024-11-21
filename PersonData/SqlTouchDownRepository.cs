@@ -50,6 +50,30 @@ namespace PersonData
             }
         }
 
+        public List<PlayerTouchdownRank> FetchTouchdownsRank(int year, string position)
+        {
+            var stats = new List<PlayerTouchdownRank>();
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("Football.FetchTouchdownsRank", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Year", year);
+                    command.Parameters.AddWithValue("@Position", position);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        stats = TranslatePlayerTouchdownStats(reader);
+                    }
+                }
+            }
+
+            return stats;
+        }
+
         private List<PlayerTouchdownRank> TranslatePlayerTouchdownStats(SqlDataReader reader)
         {
             var stats = new List<PlayerTouchdownRank>();
