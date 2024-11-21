@@ -16,6 +16,8 @@ namespace View
             InsertData.EditPlayer += (s, e) => NavigateToEditPlayer();
             InsertData.EditGame += (s, e) => NavigateToEditGame();
             InsertData.ViewStats += (s, e) => NavigateToViewStats();
+            InsertData.EditStats += (s, e) => NavigateToEditStats();
+
 
 
             MostTouchdowns.CustomChange += NavigateBackToHome;
@@ -29,6 +31,8 @@ namespace View
             EditPlayer.NavigateBack += (s, e) => NavigateBackToInsertData();
             EditGame.NavigateBack += (s, e) => NavigateBackToInsertData();
             ViewStats.NavigateBack += (s, e) => NavigateBackToInsertData();
+            EditStats.NavigateBack += (s, e) => NavigateBackToInsertData();
+
 
 
 
@@ -97,6 +101,12 @@ namespace View
             ViewStats.Visibility = Visibility.Visible;
         }
 
+        private void NavigateToEditStats()
+        {
+            HideAllPages();
+            EditStats.Visibility = Visibility.Visible;
+        }
+
 
         private void NavigateBackToInsertData()
         {
@@ -121,8 +131,10 @@ namespace View
             EditPlayer.Visibility = Visibility.Hidden;
             EditGame.Visibility = Visibility.Hidden;
             ViewStats.Visibility = Visibility.Hidden;
+            EditStats.Visibility = Visibility.Hidden;
 
-            
+
+
 
         }
     }

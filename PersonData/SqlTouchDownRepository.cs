@@ -230,6 +230,58 @@ namespace PersonData
         }
 
 
+        public void EditPlayerStats(
+    int gameId,
+    string teamName,
+    int playerId,
+    int? rushingYards = null,
+    int? receivingYards = null,
+    int? throwingYards = null,
+    int? tackles = null,
+    int? sacks = null,
+    int? turnovers = null,
+    int? interceptionsCaught = null,
+    int? touchdowns = null,
+    int? punts = null,
+    int? fieldGoalsMade = null)
+        {
+            if (string.IsNullOrWhiteSpace(teamName))
+                throw new ArgumentException("Team name cannot be null or empty.", nameof(teamName));
+
+            if (gameId <= 0)
+                throw new ArgumentException("Game ID must be a positive integer.", nameof(gameId));
+
+            if (playerId <= 0)
+                throw new ArgumentException("Player ID must be a positive integer.", nameof(playerId));
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("Football.EditPlayerStats", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add required parameters
+                    command.Parameters.AddWithValue("@GameId", gameId);
+                    command.Parameters.AddWithValue("@TeamName", teamName);
+                    command.Parameters.AddWithValue("@PlayerId", playerId);
+
+                    // Add optional parameters
+                    command.Parameters.AddWithValue("@RushingYards", rushingYards.HasValue ? (object)rushingYards.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@ReceivingYards", receivingYards.HasValue ? (object)receivingYards.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@ThrowingYards", throwingYards.HasValue ? (object)throwingYards.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@Tackles", tackles.HasValue ? (object)tackles.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@Sacks", sacks.HasValue ? (object)sacks.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@Turnovers", turnovers.HasValue ? (object)turnovers.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@InterceptionsCaught", interceptionsCaught.HasValue ? (object)interceptionsCaught.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@Touchdowns", touchdowns.HasValue ? (object)touchdowns.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@Punts", punts.HasValue ? (object)punts.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@FieldGoalsMade", fieldGoalsMade.HasValue ? (object)fieldGoalsMade.Value : DBNull.Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
 
 

@@ -16,6 +16,8 @@
         <local:EditPlayer x:Name="EditPlayer" Visibility="Hidden" />
         <local:EditGame x:Name="EditGame" Visibility="Hidden" />
         <local:ViewStats x:Name="ViewStats" Visibility="Hidden" />
+        <local:EditStats x:Name="EditStats" Visibility="Hidden" />
+
 
 
 

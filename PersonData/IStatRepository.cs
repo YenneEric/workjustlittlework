@@ -16,5 +16,20 @@ namespace PersonData
 
         IReadOnlyList<GamePlayerStats> FetchPlayerStatsByGameAndTeam(int gameId, string teamName, int? playerId = null);
 
+        void EditPlayerStats(
+   int gameId,
+   string teamName,
+   int playerId,
+   int? rushingYards = null,
+   int? receivingYards = null,
+   int? throwingYards = null,
+   int? tackles = null,
+   int? sacks = null,
+   int? turnovers = null,
+   int? interceptionsCaught = null,
+   int? touchdowns = null,
+   int? punts = null,
+   int? fieldGoalsMade = null);
+
     }
 }

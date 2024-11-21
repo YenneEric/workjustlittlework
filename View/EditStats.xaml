@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="View.EditStats"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Header -->
+            <RowDefinition Height="*" />
+            <!-- Form Fields -->
+            <RowDefinition Height="Auto" />
+            <!-- Buttons -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <!-- Left Column -->
+            <ColumnDefinition Width="1*" />
+            <!-- Right Column -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Edit Player Stats" Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20" />
+
+        <!-- Form Fields -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Column -->
+            <StackPanel Grid.Column="0" Margin="10">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Game ID:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="GameIdTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Team Name:" VerticalAlignment="Center" Width="120" />
+                    <ComboBox x:Name="TeamNameComboBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Player ID:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="PlayerIdTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Rushing Yards:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="RushingYardsTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Receiving Yards:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="ReceivingYardsTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Throwing Yards:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="ThrowingYardsTextBox" Width="200" />
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Right Column -->
+            <StackPanel Grid.Column="1" Margin="10">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Tackles:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="TacklesTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Sacks:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="SacksTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Turnovers:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="TurnoversTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Interceptions Caught:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="InterceptionsCaughtTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Touchdowns:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="TouchdownsTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Punts:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="PuntsTextBox" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Field Goals Made:" VerticalAlignment="Center" Width="120" />
+                    <TextBox x:Name="FieldGoalsMadeTextBox" Width="200" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,20,0,0">
+            <Button Content="Save" Width="120" Click="SaveButton_Click" Margin="0,0,10,0" />
+            <Button Content="Back" Width="120" Click="BackButton_Click" />
+        </StackPanel>
+    </Grid>
+</UserControl>
