@@ -86,7 +86,10 @@ VALUES
 ('2019-10-20', 'University Park, PA', 0),
 ('2019-10-20', 'Madison, WI', 0),
 ('2019-10-20', 'Columbus, OH', 0),
-('2019-10-20', 'Chapel Hill, NC', 0);
+('2019-10-20', 'Chapel Hill, NC', 0),
+
+
+('2020-09-01', 'Tuscaloosa, AL', 0);
 
 -- Repeat the above for years 2020, 2021, 2022, 2023, and 2024 by incrementing the year in the [Date] column.
 

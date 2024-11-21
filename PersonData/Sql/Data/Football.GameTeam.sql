@@ -152,7 +152,11 @@ VALUES
 (63, 5, 1, 1300, 31), -- Ohio State Buckeyes (Home)
 (63, 11, 2, 1150, 24), -- Colorado Buffaloes (Away)
 (64, 15, 1, 1400, 34), -- North Carolina Tar Heels (Home)
-(64, 4, 2, 1050, 14); -- LSU Tigers (Away)
+(64, 4, 2, 1050, 14), -- LSU Tigers (Away)
+
+
+(65, 1, 1, 1200, 35), -- Alabama Crimson Tide (Home)
+(65, 2, 2, 1100, 28); -- Georgia Bulldogs (Away)
 
 -- Insert data into the GameTeam table
 MERGE Football.GameTeam T

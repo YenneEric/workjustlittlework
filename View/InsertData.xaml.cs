@@ -22,8 +22,6 @@ namespace View
         private string? _currentTeamName;
         private int? _currentYear;
 
-
-
         public PlayerDetails? SelectedPlayer { get; set; } // Tracks the selected player
 
         // Properties for binding
@@ -72,11 +70,8 @@ namespace View
         {
             try
             {
-
                 _currentTeamName = teamName;
                 _currentYear = year;
-
-
 
                 // Load player details
                 var team = _selectRepository.GetTeams(teamName: teamName).FirstOrDefault();
@@ -132,6 +127,7 @@ namespace View
         // Update the UI with new data
         private void UpdateData()
         {
+            // Update the data context, allowing blank lists to display nothing
             DataContext = null;
             DataContext = this;
         }
@@ -165,26 +161,21 @@ namespace View
 
         private void NavigateToEditPlayer(object sender, RoutedEventArgs e)
         {
-         
             EditPlayer?.Invoke(this, EventArgs.Empty);
         }
 
         private void NavigateToEditGame(object sender, RoutedEventArgs e)
         {
-
             EditGame?.Invoke(this, EventArgs.Empty);
         }
 
         private void NavigateToViewStats(object sender, RoutedEventArgs e)
         {
-
             ViewStats?.Invoke(this, EventArgs.Empty);
         }
 
-
         private void NavigateToEditStats(object sender, RoutedEventArgs e)
         {
-
             EditStats?.Invoke(this, EventArgs.Empty);
         }
 
@@ -194,11 +185,7 @@ namespace View
             {
                 LoadData(_currentTeamName, _currentYear.Value);
             }
-            else
-            {
-            }
         }
-
     }
 
     public class PlayerDetails
