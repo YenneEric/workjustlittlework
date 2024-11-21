@@ -58,9 +58,8 @@ namespace View
                     return;
                 }
 
+                // Player ID (optional)
                 int? playerId = null;
-
-                // Validate Player ID if provided
                 if (!string.IsNullOrWhiteSpace(PlayerIdTextBox.Text))
                 {
                     if (int.TryParse(PlayerIdTextBox.Text, out var parsedPlayerId))
@@ -85,6 +84,7 @@ namespace View
                 MessageBox.Show($"Error fetching player stats: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
         // Back button click event
         private void BackButton_Click(object sender, RoutedEventArgs e)

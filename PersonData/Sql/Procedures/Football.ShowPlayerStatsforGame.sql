@@ -16,7 +16,8 @@ BEGIN
         ps.InterceptionsCaught,
         ps.Touchdowns,
         ps.Punts,
-        ps.FieldGoalsMade
+        ps.FieldGoalsMade,
+        p.PlayerId
     FROM Football.PlayerStats ps
     INNER JOIN Football.TeamPlayer tp ON ps.TeamPlayerId = tp.TeamPlayerId
     INNER JOIN Football.Player p ON tp.PlayerId = p.PlayerId
@@ -27,3 +28,4 @@ BEGIN
       AND (@PlayerId IS NULL OR p.PlayerId = @PlayerId);
 END;
 GO
+

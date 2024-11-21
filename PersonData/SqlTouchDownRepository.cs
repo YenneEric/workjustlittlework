@@ -189,7 +189,7 @@ namespace PersonData
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    // Add parameters
+                    // Add parameters   
                     command.Parameters.AddWithValue("@GameId", gameId);
                     command.Parameters.AddWithValue("@TeamName", teamName);
 
