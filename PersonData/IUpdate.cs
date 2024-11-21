@@ -34,5 +34,17 @@ namespace PersonData
         void UpdateGameTeam(int gameTeamId, int teamTypeId, int? topOfPossessionSec = null, int? score = null);
 
 
+        void UpdateGameDetails(
+            int gameId,
+            string homeTeamName = null,
+            int? homeScore = null,
+            int? homeTimeOfPossession = null,
+            string awayTeamName = null,
+            int? awayScore = null,
+            int? awayTimeOfPossession = null,
+            string gameLocation = null,
+            DateTime? gameDate = null);
+
+
     }
 }

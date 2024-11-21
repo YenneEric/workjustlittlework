@@ -15,6 +15,8 @@ namespace View
 
         public event EventHandler? AddGame;
         public event EventHandler? EditPlayer;
+        public event EventHandler? EditGame;
+
 
         public PlayerDetails? SelectedPlayer { get; set; } // Tracks the selected player
 
@@ -153,6 +155,12 @@ namespace View
         {
          
             EditPlayer?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void NavigateToEditGame(object sender, RoutedEventArgs e)
+        {
+
+            EditGame?.Invoke(this, EventArgs.Empty);
         }
     }
 

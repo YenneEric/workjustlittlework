@@ -164,5 +164,46 @@ namespace PersonData
 
 
 
+
+        public void UpdateGameDetails(
+            int gameId,
+            string homeTeamName = null,
+            int? homeScore = null,
+            int? homeTimeOfPossession = null,
+            string awayTeamName = null,
+            int? awayScore = null,
+            int? awayTimeOfPossession = null,
+            string gameLocation = null,
+            DateTime? gameDate = null)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("Football.UpdateGameDetails", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters
+                    command.Parameters.AddWithValue("@GameId", gameId);
+                    command.Parameters.AddWithValue("@HomeTeamName", (object)homeTeamName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@HomeScore", (object)homeScore ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@HomeTimeOfPossession", (object)homeTimeOfPossession ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@AwayTeamName", (object)awayTeamName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@AwayScore", (object)awayScore ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@AwayTimeOfPossession", (object)awayTimeOfPossession ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@GameLocation", (object)gameLocation ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@GameDate", (object)gameDate ?? DBNull.Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
+
+
     }
 }

@@ -124,6 +124,7 @@
     <Content Include="Sql\Procedures\Football.CreateSeason.sql" />
     <Content Include="Sql\Procedures\Football.CreateTeam.sql" />
     <Content Include="Sql\Procedures\Football.CreateTeamPlayer.sql" />
+    <Content Include="Sql\Procedures\Football.EditGameWithId.sql" />
     <Content Include="Sql\Procedures\Football.FetchTouchdowns.sql" />
     <Content Include="Sql\Procedures\Football.GetSchedule.sql" />
     <Content Include="Sql\Procedures\Football.SelectConference.sql" />

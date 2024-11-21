@@ -14,6 +14,8 @@ namespace View
             InsertData.AddPlayer += (s, e) => NavigateToAddPlayerPage();
             InsertData.AddGame += (s, e) => NavigateToAddGamePage();
             InsertData.EditPlayer += (s, e) => NavigateToEditPlayer();
+            InsertData.EditGame += (s, e) => NavigateToEditGame();
+
             MostTouchdowns.CustomChange += NavigateBackToHome;
             MostTeamYards.CustomChange += NavigateBackToHome;
             TopScoring.CustomChange += NavigateBackToHome;
@@ -23,10 +25,12 @@ namespace View
             AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData();
             AddGame.NavigateBack += (s, e) => NavigateBackToInsertData();
             EditPlayer.NavigateBack += (s, e) => NavigateBackToInsertData();
+            EditGame.NavigateBack += (s, e) => NavigateBackToInsertData();
+
 
         }
 
-        
+
 
         private void NavigateFromHomePage(object? sender, CustomizeEventArgs e)
         {
@@ -77,6 +81,12 @@ namespace View
             EditPlayer.Visibility = Visibility.Visible;
         }
 
+        private void NavigateToEditGame()
+        {
+            HideAllPages();
+            EditGame.Visibility = Visibility.Visible;
+        }
+
         private void NavigateBackToInsertData()
         {
             HideAllPages();
@@ -98,6 +108,8 @@ namespace View
             MostTeamYards.Visibility = Visibility.Hidden;
             TopScoring.Visibility = Visibility.Hidden;
             EditPlayer.Visibility = Visibility.Hidden;
+            EditGame.Visibility = Visibility.Hidden;
+
         }
     }
 }
