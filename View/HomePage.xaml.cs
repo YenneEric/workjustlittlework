@@ -41,9 +41,14 @@ namespace View
                 if (name == "ConfrenceWins") CustomChange?.Invoke(this, new CustomizeEventArgs(name));
                 
                 if (name == "MostTeamYards") CustomChange?.Invoke(this, new CustomizeEventArgs(name));
-                
+
+                if (name == "AddSeasonTeamOrConference") CustomChange?.Invoke(this, new CustomizeEventArgs(name));
+
+
+
+
             }
-            
+
 
         }
 

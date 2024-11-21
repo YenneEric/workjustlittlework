@@ -24,6 +24,7 @@ namespace View
             MostTeamYards.CustomChange += NavigateBackToHome;
             TopScoring.CustomChange += NavigateBackToHome;
             ConfrenceWins.CustomChange += NavigateBackToHome;
+            AddSeasonTeamOrConference.CustomChange += NavigateBackToHome;
 
 
             AddPlayerPage.NavigateBack += (s, e) => NavigateBackToInsertData();
@@ -62,6 +63,11 @@ namespace View
                 case "MostTeamYards":
                     MostTeamYards.Visibility = Visibility.Visible;
                     break;
+                case "AddSeasonTeamOrConference": // Correct button name
+                    AddSeasonTeamOrConference.Visibility = Visibility.Visible; // Show the correct UserControl
+            break;
+
+                    
             }
         }
 
@@ -132,6 +138,8 @@ namespace View
             EditGame.Visibility = Visibility.Hidden;
             ViewStats.Visibility = Visibility.Hidden;
             EditStats.Visibility = Visibility.Hidden;
+            AddSeasonTeamOrConference.Visibility = Visibility.Hidden;
+
 
 
 
